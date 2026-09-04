@@ -1,0 +1,213 @@
+{
+  "model_name": "Context-Aware ETA (Random Forest)",
+  "model_type": "random_forest",
+  "model_version": "1.0.0",
+  "training_date": "2026-09-04T12:10:55.325272+00:00",
+  "training_row_count": 48,
+  "testing_row_count": 12,
+  "total_dataset_rows": 60,
+  "random_state": 42,
+  "split_method": "chronological (earlier 80% train -> later 20% test)",
+  "target_column": "actual_travel_minutes",
+  "numerical_features": [
+    "distance_km",
+    "waste_volume_tons",
+    "rainfall_mm",
+    "visibility_km",
+    "congestion_index",
+    "average_speed_kmh",
+    "event_radius",
+    "hour_of_day",
+    "day_of_week",
+    "is_peak_hour"
+  ],
+  "categorical_features": [
+    "weather_condition",
+    "traffic_level",
+    "event_level",
+    "road_restriction_type",
+    "road_restriction_severity"
+  ],
+  "baseline_speed_kmh": 25.0,
+  "metrics": {
+    "baseline": {
+      "mae": 36.32,
+      "rmse": 43.07,
+      "mean_error": -36.32,
+      "median_absolute_error": 28.8,
+      "within_tolerance_pct": 0.0,
+      "tolerance_minutes": 10.0,
+      "sample_count": 12
+    },
+    "context_aware": {
+      "mae": 4.12,
+      "rmse": 5.32,
+      "mean_error": -1.54,
+      "median_absolute_error": 2.81,
+      "within_tolerance_pct": 91.67,
+      "tolerance_minutes": 10.0,
+      "sample_count": 12
+    },
+    "mae_improvement_pct": 88.66,
+    "rmse_improvement_pct": 87.65,
+    "is_improved": true
+  },
+  "feature_importances": [
+    {
+      "feature": "rainfall_mm",
+      "importance": 0.2752
+    },
+    {
+      "feature": "average_speed_kmh",
+      "importance": 0.2075
+    },
+    {
+      "feature": "visibility_km",
+      "importance": 0.1871
+    },
+    {
+      "feature": "congestion_index",
+      "importance": 0.1578
+    },
+    {
+      "feature": "distance_km",
+      "importance": 0.0772
+    },
+    {
+      "feature": "waste_volume_tons",
+      "importance": 0.0648
+    },
+    {
+      "feature": "day_of_week",
+      "importance": 0.0036
+    },
+    {
+      "feature": "hour_of_day",
+      "importance": 0.0031
+    },
+    {
+      "feature": "traffic_level_MEDIUM",
+      "importance": 0.0028
+    },
+    {
+      "feature": "road_restriction_severity_HIGH",
+      "importance": 0.0028
+    },
+    {
+      "feature": "event_radius",
+      "importance": 0.0023
+    },
+    {
+      "feature": "is_peak_hour",
+      "importance": 0.0021
+    },
+    {
+      "feature": "event_level_NONE",
+      "importance": 0.0019
+    },
+    {
+      "feature": "road_restriction_type_CONSTRUCTION",
+      "importance": 0.0019
+    },
+    {
+      "feature": "weather_condition_CLEAR",
+      "importance": 0.0016
+    },
+    {
+      "feature": "road_restriction_type_LANE_RESTRICTION",
+      "importance": 0.0015
+    },
+    {
+      "feature": "event_level_HIGH",
+      "importance": 0.0013
+    },
+    {
+      "feature": "event_level_MEDIUM",
+      "importance": 0.001
+    },
+    {
+      "feature": "road_restriction_type_NONE",
+      "importance": 0.0007
+    },
+    {
+      "feature": "road_restriction_severity_LOW",
+      "importance": 0.0006
+    },
+    {
+      "feature": "traffic_level_LOW",
+      "importance": 0.0005
+    },
+    {
+      "feature": "road_restriction_severity_MEDIUM",
+      "importance": 0.0005
+    },
+    {
+      "feature": "road_restriction_severity_NONE",
+      "importance": 0.0005
+    },
+    {
+      "feature": "weather_condition_CLOUDY",
+      "importance": 0.0004
+    },
+    {
+      "feature": "weather_condition_STORM",
+      "importance": 0.0004
+    },
+    {
+      "feature": "traffic_level_HIGH",
+      "importance": 0.0003
+    },
+    {
+      "feature": "event_level_LOW",
+      "importance": 0.0002
+    },
+    {
+      "feature": "weather_condition_HEAVY_RAIN",
+      "importance": 0.0001
+    },
+    {
+      "feature": "weather_condition_LIGHT_RAIN",
+      "importance": 0.0001
+    },
+    {
+      "feature": "traffic_level_SEVERE",
+      "importance": 0.0001
+    },
+    {
+      "feature": "road_restriction_type_PARTIAL_CLOSURE",
+      "importance": 0.0001
+    },
+    {
+      "feature": "road_restriction_type_ROAD_CLOSURE",
+      "importance": 0.0
+    }
+  ],
+  "dataset_report": {
+    "total_records": 60,
+    "valid_records": 60,
+    "invalid_records": 0,
+    "missing_values": {
+      "id": 0,
+      "observation_date": 0,
+      "distance_km": 0,
+      "waste_volume_tons": 0,
+      "baseline_travel_minutes": 0,
+      "actual_travel_minutes": 0,
+      "hour_of_day": 0,
+      "day_of_week": 0,
+      "weather_condition": 0,
+      "rainfall_mm": 0,
+      "visibility_km": 0,
+      "temperature_c": 0,
+      "traffic_level": 0,
+      "congestion_index": 0,
+      "average_speed_kmh": 0,
+      "event_level": 0,
+      "event_radius": 0,
+      "road_restriction_type": 0,
+      "road_restriction_severity": 0
+    },
+    "notes": "Processed 60 records. 60 valid records retained for training. 0 invalid records filtered out due to boundary constraints."
+  },
+  "synthetic_disclaimer": "Synthetic Dataset \u2014 Research Prototype. Models are trained on simulated operational data."
+}
