@@ -247,8 +247,241 @@ class ApiService {
       method: 'POST',
     });
   }
+
+  // Phase 7 Multi-Vehicle Fleet Coordination APIs
+  async getFleetState(): Promise<import('../types').FleetStateResponse> {
+    return this.request<import('../types').FleetStateResponse>('/fleet/state');
+  }
+
+  async getFleetVehicles(): Promise<import('../types').VehicleFleetItem[]> {
+    return this.request<import('../types').VehicleFleetItem[]>('/fleet/vehicles');
+  }
+
+  async getFleetTasks(status?: string): Promise<import('../types').CollectionTask[]> {
+    const query = status ? `?status=${encodeURIComponent(status)}` : '';
+    return this.request<import('../types').CollectionTask[]>(`/fleet/tasks${query}`);
+  }
+
+  async createCollectionTask(params: import('../types').CollectionTaskCreate): Promise<import('../types').CollectionTask> {
+    return this.request<import('../types').CollectionTask>('/fleet/tasks', {
+      method: 'POST',
+      body: JSON.stringify(params),
+    });
+  }
+
+  async assignTask(taskId: string): Promise<import('../types').TaskAssignResponse> {
+    return this.request<import('../types').TaskAssignResponse>(`/fleet/tasks/${taskId}/assign`, {
+      method: 'POST',
+    });
+  }
+
+  async triggerEmergencyTask(taskId: string): Promise<import('../types').TaskAssignResponse> {
+    return this.request<import('../types').TaskAssignResponse>(`/fleet/tasks/${taskId}/emergency`, {
+      method: 'POST',
+    });
+  }
+
+  async simulateBreakdown(vehicleId: string, reason = 'MECHANICAL_FAILURE'): Promise<import('../types').VehicleBreakdownResponse> {
+    return this.request<import('../types').VehicleBreakdownResponse>(`/fleet/vehicles/${vehicleId}/breakdown`, {
+      method: 'POST',
+      body: JSON.stringify({ reason }),
+    });
+  }
+
+  async recoverVehicle(vehicleId: string): Promise<{ vehicle_id: string; status: string; message: string }> {
+    return this.request<{ vehicle_id: string; status: string; message: string }>(`/fleet/vehicles/${vehicleId}/recover`, {
+      method: 'POST',
+    });
+  }
+
+  async rebalanceFleet(triggerReason = 'MANUAL_REBALANCE'): Promise<import('../types').FleetRebalanceResponse> {
+    return this.request<import('../types').FleetRebalanceResponse>('/fleet/rebalance', {
+      method: 'POST',
+      body: JSON.stringify({ trigger_reason: triggerReason }),
+    });
+  }
+
+  async getFleetEvents(limit = 50): Promise<import('../types').FleetAuditEvent[]> {
+    return this.request<import('../types').FleetAuditEvent[]>(`/fleet/events?limit=${limit}`);
+  }
+
+  async simulateFleetStep(params: { step_duration_minutes?: number; auto_rebalance_on_disruption?: boolean } = {}): Promise<import('../types').FleetSimulationStepResponse> {
+    return this.request<import('../types').FleetSimulationStepResponse>('/fleet/simulate-step', {
+      method: 'POST',
+      body: JSON.stringify(params),
+    });
+  }
+
+  async runFleetBenchmark(): Promise<import('../types').FleetExperimentSummaryResponse> {
+    return this.request<import('../types').FleetExperimentSummaryResponse>('/fleet/experiments/run', {
+      method: 'POST',
+    });
+  }
+
+  // Phase 8 Advanced Optimization Methods
+  async getOptimizationSummary(): Promise<import('../types').FleetOptimizationSummary> {
+    return this.request<import('../types').FleetOptimizationSummary>('/fleet/optimization/summary');
+  }
+
+  async getOptimizationComparison(): Promise<import('../types').AllocationComparison> {
+    return this.request<import('../types').AllocationComparison>('/fleet/optimization/comparison');
+  }
+
+  async getFailureDiagnostics(): Promise<import('../types').FailureDiagnostic[]> {
+    return this.request<import('../types').FailureDiagnostic[]>('/fleet/optimization/failures');
+  }
+
+  async runPhase8BenchmarkSuite(forceFresh = true): Promise<import('../types').Phase8ExperimentSummary> {
+    return this.request<import('../types').Phase8ExperimentSummary>(`/fleet/optimization/experiments/run?force_fresh=${forceFresh}`, {
+      method: 'POST',
+    });
+  }
+
+  async getPhase8BenchmarkExperiments(): Promise<import('../types').Phase8ExperimentSummary> {
+    return this.request<import('../types').Phase8ExperimentSummary>('/fleet/optimization/experiments');
+  }
+
+  async triggerPhase8Emergency(locationNode: string, estimatedWasteKg: number): Promise<any> {
+    return this.request('/fleet/optimization/emergency', {
+      method: 'POST',
+      body: JSON.stringify({
+        location_node: locationNode,
+        estimated_waste_kg: estimatedWasteKg,
+        priority: 'URGENT',
+      }),
+    });
+  }
+
+  async triggerPhase8Breakdown(vehicleId: string): Promise<any> {
+    return this.request(`/fleet/optimization/breakdown?vehicle_id=${vehicleId}`, {
+      method: 'POST',
+    });
+  }
+
+  async triggerPhase8Rebalance(triggerReason: string, forceRebalance = false): Promise<any> {
+    return this.request('/fleet/optimization/rebalance', {
+      method: 'POST',
+      body: JSON.stringify({
+        trigger_reason: triggerReason,
+        force_rebalance: forceRebalance,
+      }),
+    });
+  }
+
+  // ---------------------------------------------------------
+  // Phase 9: Real-Time IoT Telemetry & Sensor Fusion Methods
+  // ---------------------------------------------------------
+
+  async getVehicleTelemetry(): Promise<import('../types').VehicleGPSTelemetry[]> {
+    return this.request<import('../types').VehicleGPSTelemetry[]>('/telemetry/vehicles');
+  }
+
+  async ingestVehicleTelemetry(telemetry: Record<string, any>): Promise<any> {
+    return this.request('/telemetry/vehicle', {
+      method: 'POST',
+      body: JSON.stringify(telemetry),
+    });
+  }
+
+  async getBinTelemetry(): Promise<import('../types').BinSensorTelemetry[]> {
+    return this.request<import('../types').BinSensorTelemetry[]>('/telemetry/bins');
+  }
+
+  async ingestBinTelemetry(telemetry: Record<string, any>): Promise<any> {
+    return this.request('/telemetry/bin', {
+      method: 'POST',
+      body: JSON.stringify(telemetry),
+    });
+  }
+
+  async getTelemetryHealth(): Promise<import('../types').TelemetryHealthSummary> {
+    return this.request<import('../types').TelemetryHealthSummary>('/telemetry/health');
+  }
+
+  async getTelemetryAlerts(limit = 50): Promise<import('../types').TelemetryAlert[]> {
+    return this.request<import('../types').TelemetryAlert[]>(`/telemetry/alerts?limit=${limit}`);
+  }
+
+  async stepTelemetrySimulation(elapsedSeconds = 5.0): Promise<import('../types').RealtimeOperationalState> {
+    return this.request<import('../types').RealtimeOperationalState>(`/telemetry/simulate/step?elapsed_seconds=${elapsedSeconds}`, {
+      method: 'POST',
+    });
+  }
+
+  async getFusedFleetState(weather = 'CLEAR', traffic = 'NORMAL'): Promise<import('../types').RealtimeOperationalState> {
+    return this.request<import('../types').RealtimeOperationalState>(`/realtime/fleet?weather=${weather}&traffic=${traffic}`);
+  }
+
+  async getDepots(): Promise<import('../types').DepotInfo[]> {
+    return this.request<import('../types').DepotInfo[]>('/realtime/depots');
+  }
+
+  async getAuditLog(limit = 50, action?: string, entityType?: string): Promise<import('../types').AuditEvent[]> {
+    let url = `/realtime/audit?limit=${limit}`;
+    if (action) url += `&action=${action}`;
+    if (entityType) url += `&entity_type=${entityType}`;
+    return this.request<import('../types').AuditEvent[]>(url);
+  }
+
+  async login(username: string, password: string): Promise<import('../types').TokenResponse> {
+    return this.request<import('../types').TokenResponse>('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+    });
+  }
+
+  async getCurrentUser(): Promise<import('../types').AuthUser> {
+    return this.request<import('../types').AuthUser>('/auth/me');
+  }
+
+  async getDemoUsers(): Promise<import('../types').AuthUser[]> {
+    return this.request<import('../types').AuthUser[]>('/auth/demo-users');
+  }
+
+  async runPhase9BenchmarkSuite(): Promise<import('../types').Phase9BenchmarkSummary> {
+    return this.request<import('../types').Phase9BenchmarkSummary>('/telemetry/experiments/run', {
+      method: 'POST',
+    });
+  }
+
+  async getPhase9BenchmarkExperiments(): Promise<import('../types').Phase9BenchmarkSummary> {
+    return this.request<import('../types').Phase9BenchmarkSummary>('/telemetry/experiments');
+  }
+
+  async runScalabilityBenchmark(): Promise<import('../types').ScalabilityBenchmarkResult> {
+    return this.request<import('../types').ScalabilityBenchmarkResult>('/telemetry/scalability/run', {
+      method: 'POST',
+    });
+  }
+
+  async getScalabilityBenchmark(): Promise<import('../types').ScalabilityBenchmarkResult> {
+    return this.request<import('../types').ScalabilityBenchmarkResult>('/telemetry/scalability');
+  }
+
+  // Phase 10 Final Command Center & Full System Integration
+  async getExtendedHealth(): Promise<import('../types').ExtendedHealthResponse> {
+    return this.request<import('../types').ExtendedHealthResponse>('/health');
+  }
+
+  async runFullSystemDemo(seed: number = 42): Promise<import('../types').SimulationDemoState> {
+    return this.request<import('../types').SimulationDemoState>('/simulation/full-system-demo', {
+      method: 'POST',
+      body: JSON.stringify({ seed }),
+    });
+  }
+
+  async getDemoState(): Promise<import('../types').SimulationDemoState> {
+    return this.request<import('../types').SimulationDemoState>('/simulation/demo-state');
+  }
+
+  async getFinalBenchmarks(): Promise<import('../types').FinalBenchmarkComparison> {
+    return this.request<import('../types').FinalBenchmarkComparison>('/simulation/benchmarks');
+  }
 }
 
 export const api = new ApiService();
 export default api;
+
+
+
 

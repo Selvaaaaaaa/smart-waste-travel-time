@@ -2,6 +2,7 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.core.database import Base, get_db
+import app.models  # Register all domain models on Base.metadata
 from app.main import app
 from app.db.seed import seed_database
 from fastapi.testclient import TestClient

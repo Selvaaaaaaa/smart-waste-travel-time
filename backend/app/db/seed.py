@@ -23,6 +23,7 @@ from app.models.observation import TravelTimeObservation
 from app.models.eta_prediction import ETAPrediction
 from app.models.scenario import Scenario
 from app.models.experiment import Experiment
+from app.models.experiment_result import ExperimentResult
 from app.models.routing_models import ActiveTrip, RouteCandidate, ReroutingEvent
 from app.models.fleet_models import CollectionTask, FleetAuditEvent
 
@@ -435,6 +436,100 @@ def seed_database(db: Session = None) -> dict:
                 route_completion_minutes=48.0,
             )
             db.add(r_ctx)
+
+        # Seed Phase 7 Collection Tasks & Audit Events
+        initial_tasks = [
+            CollectionTask(
+                id="TSK-DEMO-01",
+                location_node="COLLECTION_ZONE_A",
+                estimated_waste_kg=1200.0,
+                priority="NORMAL",
+                request_type="SCHEDULED_COLLECTION",
+                status="ASSIGNED",
+                assigned_vehicle_id="V-01",
+                assigned_driver_id="EMP-001",
+                notes="Morning commercial pickup",
+                created_at=datetime.utcnow() - timedelta(hours=2),
+                assigned_at=datetime.utcnow() - timedelta(hours=1),
+            ),
+            CollectionTask(
+                id="TSK-DEMO-02",
+                location_node="COLLECTION_ZONE_B",
+                estimated_waste_kg=1500.0,
+                priority="NORMAL",
+                request_type="SCHEDULED_COLLECTION",
+                status="ASSIGNED",
+                assigned_vehicle_id="V-01",
+                assigned_driver_id="EMP-001",
+                notes="Midtown secondary collection",
+                created_at=datetime.utcnow() - timedelta(hours=2),
+                assigned_at=datetime.utcnow() - timedelta(hours=1),
+            ),
+            CollectionTask(
+                id="TSK-DEMO-03",
+                location_node="COLLECTION_ZONE_E",
+                estimated_waste_kg=1100.0,
+                priority="NORMAL",
+                request_type="SCHEDULED_COLLECTION",
+                status="IN_PROGRESS",
+                assigned_vehicle_id="V-02",
+                assigned_driver_id="EMP-002",
+                notes="West waterfront commercial waste",
+                created_at=datetime.utcnow() - timedelta(hours=1),
+                assigned_at=datetime.utcnow() - timedelta(minutes=45),
+            ),
+            CollectionTask(
+                id="TSK-DEMO-04",
+                location_node="COLLECTION_ZONE_C",
+                estimated_waste_kg=2200.0,
+                priority="HIGH",
+                request_type="SCHEDULED_COLLECTION",
+                status="PENDING",
+                notes="High-density mixed use hub",
+                created_at=datetime.utcnow() - timedelta(minutes=30),
+            ),
+            CollectionTask(
+                id="TSK-DEMO-05",
+                location_node="COLLECTION_ZONE_D",
+                estimated_waste_kg=1400.0,
+                priority="NORMAL",
+                request_type="SCHEDULED_COLLECTION",
+                status="PENDING",
+                notes="North residential sector",
+                created_at=datetime.utcnow() - timedelta(minutes=20),
+            ),
+            CollectionTask(
+                id="TSK-DEMO-EMG",
+                location_node="COLLECTION_ZONE_F",
+                estimated_waste_kg=1800.0,
+                priority="URGENT",
+                request_type="EMERGENCY_REQUEST",
+                status="PENDING",
+                deadline_minutes=45.0,
+                notes="Overflowing commercial dumpsters requiring rapid dispatch",
+                created_at=datetime.utcnow() - timedelta(minutes=5),
+            ),
+        ]
+        for task in initial_tasks:
+            db.add(task)
+
+        init_audit = FleetAuditEvent(
+            id="AUD-INIT-001",
+            event_type="FLEET_INITIALIZED",
+            task_id="TSK-DEMO-01",
+            previous_vehicle_id=None,
+            new_vehicle_id="V-01",
+            previous_route=[],
+            new_route=["DEPOT_CENTRAL", "COLLECTION_ZONE_A", "COLLECTION_ZONE_B", "LANDFILL_MAIN"],
+            predicted_eta_before=None,
+            predicted_eta_after=24.5,
+            distance_difference_km=7.5,
+            safety_result="SAFE",
+            selected_eta_model="ADAPTIVE_HYBRID",
+            reason="Nominal morning dispatch: V-01 selected with optimal payload balance.",
+            timestamp=datetime.utcnow() - timedelta(hours=1),
+        )
+        db.add(init_audit)
 
         db.commit()
 

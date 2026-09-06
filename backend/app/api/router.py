@@ -16,6 +16,12 @@ from app.api.routes import (
     ml,
     eta,
     routing,
+    fleet,
+    fleet_optimization,
+    auth,
+    telemetry,
+    realtime,
+    simulation,
 )
 
 api_router = APIRouter()
@@ -36,4 +42,11 @@ api_router.include_router(safety.router)
 api_router.include_router(ml.router)
 api_router.include_router(eta.router)
 api_router.include_router(routing.router)
+api_router.include_router(fleet.router)
+api_router.include_router(fleet_optimization.router)
+api_router.include_router(auth.router)
+api_router.include_router(telemetry.router)
+api_router.include_router(realtime.router)
+api_router.include_router(simulation.router)
+
 

@@ -1,0 +1,187 @@
+{
+  "benchmark_summary": {
+    "total_runs": 40,
+    "scenarios_evaluated": [
+      "NORMAL_REALTIME",
+      "GPS_TELEMETRY_STREAM",
+      "CRITICAL_BIN",
+      "TELEMETRY_STALE",
+      "ROUTE_DEVIATION",
+      "HEAVY_TRAFFIC_REALTIME",
+      "VEHICLE_BREAKDOWN_REALTIME",
+      "COMBINED_REALTIME_STRESS"
+    ],
+    "seeds_evaluated": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "overall_telemetry_health_rate_pct": 100.0,
+    "total_telemetry_messages_generated": 7200,
+    "total_route_deviations_detected": 800,
+    "total_critical_bins_detected": 45,
+    "total_emergency_requests_generated": 45,
+    "emergency_fulfillment_rate_pct": 100.0,
+    "average_eta_recalculation_time_ms": 0.62,
+    "scenario_stats": {
+      "NORMAL_REALTIME": {
+        "scenario": "NORMAL_REALTIME",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 5,
+        "emergency_requests_generated": 5,
+        "average_eta_recalculation_ms": 2.09,
+        "mean_eta_minutes": 8.9,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      },
+      "GPS_TELEMETRY_STREAM": {
+        "scenario": "GPS_TELEMETRY_STREAM",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 5,
+        "emergency_requests_generated": 5,
+        "average_eta_recalculation_ms": 0.39,
+        "mean_eta_minutes": 8.9,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      },
+      "CRITICAL_BIN": {
+        "scenario": "CRITICAL_BIN",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 10,
+        "emergency_requests_generated": 10,
+        "average_eta_recalculation_ms": 0.38,
+        "mean_eta_minutes": 8.9,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      },
+      "TELEMETRY_STALE": {
+        "scenario": "TELEMETRY_STALE",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 5,
+        "emergency_requests_generated": 5,
+        "average_eta_recalculation_ms": 0.37,
+        "mean_eta_minutes": 8.9,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      },
+      "ROUTE_DEVIATION": {
+        "scenario": "ROUTE_DEVIATION",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 5,
+        "emergency_requests_generated": 5,
+        "average_eta_recalculation_ms": 0.38,
+        "mean_eta_minutes": 8.9,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      },
+      "HEAVY_TRAFFIC_REALTIME": {
+        "scenario": "HEAVY_TRAFFIC_REALTIME",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 5,
+        "emergency_requests_generated": 5,
+        "average_eta_recalculation_ms": 0.44,
+        "mean_eta_minutes": 17.3,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      },
+      "VEHICLE_BREAKDOWN_REALTIME": {
+        "scenario": "VEHICLE_BREAKDOWN_REALTIME",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 5,
+        "emergency_requests_generated": 5,
+        "average_eta_recalculation_ms": 0.43,
+        "mean_eta_minutes": 8.9,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      },
+      "COMBINED_REALTIME_STRESS": {
+        "scenario": "COMBINED_REALTIME_STRESS",
+        "runs_count": 5,
+        "telemetry_health_rate_pct": 100.0,
+        "route_deviations_detected": 100,
+        "critical_bins_detected": 5,
+        "emergency_requests_generated": 5,
+        "average_eta_recalculation_ms": 0.51,
+        "mean_eta_minutes": 17.3,
+        "rerouting_success_rate_pct": 100.0,
+        "failure_counts": {
+          "GPS_ROUTE_DEVIATION": 100
+        }
+      }
+    },
+    "failure_counts_by_category": {
+      "GPS_ROUTE_DEVIATION": 800
+    },
+    "disclaimer": "Phase 9 Empirical 40-Run Benchmark Execution"
+  },
+  "scalability_summary": {
+    "timestamp": "2026-09-06 11:53:35.177774",
+    "benchmarks": [
+      {
+        "vehicle_count": 6,
+        "depot_count": 3,
+        "telemetry_messages_processed": 300,
+        "average_processing_latency_ms": 0.016,
+        "peak_processing_latency_ms": 0.077,
+        "telemetry_throughput_msg_per_sec": 62665.8,
+        "optimization_execution_time_ms": 417.52,
+        "memory_rss_mb": 199.2,
+        "status": "PASS"
+      },
+      {
+        "vehicle_count": 20,
+        "depot_count": 3,
+        "telemetry_messages_processed": 1000,
+        "average_processing_latency_ms": 0.015,
+        "peak_processing_latency_ms": 0.261,
+        "telemetry_throughput_msg_per_sec": 63160.0,
+        "optimization_execution_time_ms": 422.16,
+        "memory_rss_mb": 200.5,
+        "status": "PASS"
+      },
+      {
+        "vehicle_count": 50,
+        "depot_count": 3,
+        "telemetry_messages_processed": 2500,
+        "average_processing_latency_ms": 0.017,
+        "peak_processing_latency_ms": 1.293,
+        "telemetry_throughput_msg_per_sec": 58865.4,
+        "optimization_execution_time_ms": 454.29,
+        "memory_rss_mb": 202.9,
+        "status": "PASS"
+      }
+    ],
+    "scalability_verdict": "Successfully scaled to 50 vehicles with average ingestion latency < 1.0ms and throughput > 1000 msg/sec.",
+    "disclaimer": "Measured Empirical Scalability Benchmark"
+  }
+}

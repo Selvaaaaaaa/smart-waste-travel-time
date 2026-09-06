@@ -41,5 +41,18 @@ services:
       db:
         condition: service_healthy
 
+  # React/Vite Frontend Service (Phase 10 Production Integration)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: smart_waste_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
 volumes:
   postgres_data:
+

@@ -686,3 +686,623 @@ export interface RoutingExperimentSummary {
   disclaimer: string;
 }
 
+// ==========================================
+// Phase 7 Multi-Vehicle Fleet Coordination
+// ==========================================
+
+export interface VehicleFleetItem {
+  vehicle_id: string;
+  vehicle_code: string;
+  vehicle_type: string;
+  capacity_kg: number;
+  current_payload_kg: number;
+  current_location: string;
+  driver_id?: string | null;
+  driver_name?: string | null;
+  driver_shift_remaining_min: number;
+  current_route: string[];
+  current_task_id?: string | null;
+  status: 'AVAILABLE' | 'ASSIGNED' | 'EN_ROUTE' | 'AT_STOP' | 'LOADING' | 'RETURNING' | 'OVERLOADED' | 'BREAKDOWN' | 'OFF_DUTY' | string;
+  overload_status: 'NORMAL' | 'WARNING' | 'CRITICAL' | 'OVERLOADED' | string;
+  utilization_pct: number;
+  safety_status: string;
+  estimated_available_time_min: number;
+  assigned_tasks_count?: number;
+  completed_tasks_count?: number;
+  pending_tasks_count?: number;
+  estimated_workload_minutes?: number;
+  route_distance_km?: number;
+  workload_deviation_minutes?: number;
+}
+
+
+export interface FleetSummary {
+  total_vehicles: number;
+  available: number;
+  assigned: number;
+  en_route: number;
+  overloaded: number;
+  breakdown: number;
+  off_duty: number;
+  mean_utilization_pct: number;
+  utilization_variance: number;
+  load_balance_score: number;
+}
+
+export interface FleetStateResponse {
+  summary: FleetSummary;
+  vehicles: VehicleFleetItem[];
+  active_tasks_count: number;
+  pending_tasks_count: number;
+  timestamp: string;
+  disclaimer: string;
+}
+
+export interface CollectionTask {
+  id: string;
+  location_node: string;
+  estimated_waste_kg: number;
+  priority: 'LOW' | 'NORMAL' | 'HIGH' | 'URGENT' | string;
+  request_type: 'SCHEDULED_COLLECTION' | 'EMERGENCY_REQUEST' | string;
+  status: 'PENDING' | 'ASSIGNED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED' | 'DEFERRED' | string;
+  assigned_vehicle_id?: string | null;
+  assigned_driver_id?: string | null;
+  deadline_minutes?: number | null;
+  predicted_eta_minutes?: number | null;
+  notes?: string | null;
+  created_at: string;
+  assigned_at?: string | null;
+  completed_at?: string | null;
+}
+
+export interface CollectionTaskCreate {
+  location_node: string;
+  estimated_waste_kg: number;
+  priority?: string;
+  request_type?: string;
+  deadline_minutes?: number;
+  notes?: string;
+}
+
+export interface CandidateVehicleEvaluation {
+  vehicle_id: string;
+  vehicle_code: string;
+  is_safe: boolean;
+  rejection_reason?: string | null;
+  allocation_score?: number | null;
+  predicted_eta_min?: number | null;
+  additional_distance_km?: number | null;
+  projected_payload_kg: number;
+  projected_shift_minutes: number;
+  selected_eta_model: string;
+  prediction_spread_min: number;
+}
+
+export interface TaskAssignResponse {
+  task_id: string;
+  status: string;
+  selected_vehicle_id?: string | null;
+  selected_driver_id?: string | null;
+  selected_route: string[];
+  predicted_eta_minutes?: number | null;
+  allocation_score?: number | null;
+  selection_reason: string;
+  candidate_evaluations: CandidateVehicleEvaluation[];
+  safety_result: string;
+  disclaimer: string;
+}
+
+export interface FleetAuditEvent {
+  id: string;
+  event_type: string;
+  task_id?: string | null;
+  previous_vehicle_id?: string | null;
+  new_vehicle_id?: string | null;
+  previous_route: string[];
+  new_route: string[];
+  predicted_eta_before?: number | null;
+  predicted_eta_after?: number | null;
+  distance_difference_km: number;
+  safety_result: string;
+  selected_eta_model: string;
+  reason: string;
+  timestamp: string;
+}
+
+export interface FleetRebalanceResponse {
+  rebalance_triggered: boolean;
+  trigger_reason: string;
+  affected_tasks_count: number;
+  reassigned_tasks_count: number;
+  deferred_tasks_count: number;
+  details: Array<{
+    task_id: string;
+    status: string;
+    previous_vehicle_id?: string | null;
+    new_vehicle_id?: string | null;
+    eta_minutes?: number | null;
+    notes?: string;
+  }>;
+  audit_events: FleetAuditEvent[];
+  disclaimer: string;
+}
+
+export interface VehicleBreakdownResponse {
+  vehicle_id: string;
+  previous_status: string;
+  new_status: string;
+  affected_tasks: string[];
+  rebalance_result?: FleetRebalanceResponse | null;
+  message: string;
+}
+
+export interface FleetSimulationStepResponse {
+  step_duration_minutes: number;
+  events_detected: string[];
+  vehicles_updated: number;
+  tasks_completed: string[];
+  rebalance_performed: boolean;
+  rebalance_details?: FleetRebalanceResponse | null;
+  fleet_summary: FleetSummary;
+  disclaimer: string;
+}
+
+export interface FleetBenchmarkRunResult {
+  scenario_name: string;
+  seed: number;
+  tasks_assigned: number;
+  tasks_total: number;
+  assignment_success_rate: number;
+  safe_assignment_rate: number;
+  avg_assignment_eta_min: number;
+  total_fleet_travel_time_min: number;
+  total_fleet_distance_km: number;
+  emergency_fulfilled: number;
+  emergency_total: number;
+  breakdown_recovered: number;
+  breakdown_total: number;
+  mean_vehicle_utilization_pct: number;
+  utilization_variance: number;
+  load_balance_score: number;
+  unsafe_assignments_prevented: number;
+  reassignments_count: number;
+  avg_rebalancing_improvement_min: number;
+  unassigned_task_count: number;
+  primary_failure_mode?: string | null;
+}
+
+export interface FleetExperimentSummaryResponse {
+  total_runs: number;
+  scenarios_evaluated: string[];
+  task_assignment_success_rate_pct: number;
+  safe_assignment_rate_pct: number;
+  avg_assignment_eta_min: number;
+  avg_fleet_travel_time_min: number;
+  avg_fleet_distance_km: number;
+  emergency_fulfillment_rate_pct: number;
+  breakdown_recovery_rate_pct: number;
+  avg_vehicle_utilization_pct: number;
+  utilization_variance: number;
+  fleet_load_balance_score: number;
+  unsafe_assignments_prevented: number;
+  reassignments_count: number;
+  avg_rebalancing_improvement_min: number;
+  unassigned_task_rate_pct: number;
+  scenario_breakdown: Record<string, {
+    success_rate_pct: number;
+    safe_rate_pct: number;
+    avg_eta_min: number;
+    mean_utilization_pct: number;
+    load_balance_score: number;
+    unsafe_prevented: number;
+    reassignments: number;
+  }>;
+  failure_analysis: Record<string, number>;
+  detailed_runs: FleetBenchmarkRunResult[];
+  disclaimer: string;
+}
+
+// ============================================================================
+// PHASE 8 TYPES — ADVANCED FLEET OPTIMIZATION & REALISTIC VALIDATION
+// ============================================================================
+
+export interface FleetOptimizationSummary {
+  total_vehicles: number;
+  active_vehicles: number;
+  available_vehicles: number;
+  assigned_vehicles: number;
+  overloaded_vehicles: number;
+  breakdown_vehicles: number;
+  workload_balance_score: number;
+  fleet_mean_workload_min: number;
+  fleet_workload_std_min: number;
+  mean_utilization_pct: number;
+  emergency_requests_count: number;
+  unsafe_assignments_prevented: number;
+  disclaimer: string;
+}
+
+export interface MetricComparisonItem {
+  baseline_value: number;
+  optimized_value: number;
+  absolute_difference: number;
+  percentage_improvement: number;
+  unit: string;
+}
+
+export interface AllocationComparison {
+  strategy_evaluated: string;
+  task_count: number;
+  eta_comparison: MetricComparisonItem;
+  distance_comparison: MetricComparisonItem;
+  utilization_comparison: MetricComparisonItem;
+  workload_balance_comparison: MetricComparisonItem;
+  safety_violations_prevented_comparison: MetricComparisonItem;
+  reassignment_count_comparison: MetricComparisonItem;
+  summary_verdict: string;
+  disclaimer: string;
+}
+
+export interface FailureDiagnostic {
+  scenario: string;
+  seed: number;
+  task_id?: string | null;
+  vehicle_id?: string | null;
+  failure_category: string;
+  failure_reason: string;
+  recovery_action: string;
+  final_status: string;
+}
+
+export interface Phase8BenchmarkRun {
+  scenario_name: string;
+  seed: number;
+  tasks_assigned: number;
+  tasks_total: number;
+  assignment_success_rate: number;
+  safe_assignment_rate: number;
+  unassigned_task_rate: number;
+  emergency_fulfillment_rate: number;
+  vehicle_utilization_mean_pct: number;
+  workload_balance_metric: number;
+  avg_tasks_per_vehicle: number;
+  reassignment_count: number;
+  avg_eta_min: number;
+  total_travel_time_min: number;
+  avg_distance_km: number;
+  additional_distance_km: number;
+  rerouting_success_rate: number;
+  unsafe_candidates_rejected: number;
+  unsafe_assignments_prevented: number;
+  payload_violations_prevented: number;
+  shift_violations_prevented: number;
+  blocked_road_violations_prevented: number;
+  breakdown_recovery_rate: number;
+  avg_recovery_time_min: number;
+  affected_task_count: number;
+  baseline_allocation_score: number;
+  optimized_allocation_score: number;
+  optimization_improvement_pct: number;
+  execution_time_ms: number;
+  primary_failure_category?: string | null;
+}
+
+export interface ScenarioStat {
+  scenario_name: string;
+  num_runs: number;
+  eta_mean: number;
+  eta_median: number;
+  eta_min: number;
+  eta_max: number;
+  eta_std: number;
+  distance_mean: number;
+  distance_median: number;
+  distance_min: number;
+  distance_max: number;
+  distance_std: number;
+  score_mean: number;
+  score_median: number;
+  score_min: number;
+  score_max: number;
+  score_std: number;
+  workload_balance_mean: number;
+  workload_balance_median: number;
+  workload_balance_min: number;
+  workload_balance_max: number;
+  workload_balance_std: number;
+  recovery_time_mean: number;
+  recovery_time_std: number;
+  pct_improvement_over_baseline: number;
+}
+
+export interface Phase8ExperimentSummary {
+  total_runs: number;
+  scenarios_evaluated: string[];
+  seeds_evaluated: number[];
+  overall_assignment_success_rate_pct: number;
+  overall_safe_assignment_rate_pct: number;
+  overall_emergency_fulfillment_rate_pct: number;
+  overall_breakdown_recovery_rate_pct: number;
+  overall_mean_workload_balance: number;
+  overall_mean_utilization_pct: number;
+  total_unsafe_candidates_rejected: number;
+  total_unsafe_assignments_prevented: number;
+  total_payload_violations_prevented: number;
+  total_shift_violations_prevented: number;
+  total_blocked_road_violations_prevented: number;
+  mean_baseline_score: number;
+  mean_optimized_score: number;
+  overall_optimization_improvement_pct: number;
+  scenario_statistics: Record<string, ScenarioStat>;
+  failure_distribution: Record<string, number>;
+  failure_diagnostic_log: FailureDiagnostic[];
+  detailed_runs: Phase8BenchmarkRun[];
+  benchmark_execution_time_seconds: number;
+  disclaimer: string;
+}
+
+// ---------------------------------------------------------
+// Phase 9: Real-Time IoT Telemetry & Sensor Fusion Types
+// ---------------------------------------------------------
+
+export interface VehicleGPSTelemetry {
+  vehicle_id: string;
+  timestamp: string;
+  latitude: number;
+  longitude: number;
+  speed_kmh: number;
+  heading: number;
+  current_route_id?: string | null;
+  current_task_id?: string | null;
+  engine_status: string;
+  telemetry_sequence: number;
+  health_status: string;
+  source: string;
+}
+
+export interface BinSensorTelemetry {
+  bin_id: string;
+  location_node: string;
+  timestamp: string;
+  fill_level_percent: number;
+  estimated_waste_kg: number;
+  temperature_c: number;
+  sensor_battery_percent: number;
+  sensor_status: string;
+  status_classification: 'NORMAL' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | string;
+  sequence_number: number;
+  health_status: string;
+  source: string;
+}
+
+export interface TelemetryAlert {
+  alert_id: string;
+  alert_type: string;
+  severity: 'INFO' | 'WARNING' | 'CRITICAL' | string;
+  entity_id: string;
+  message: string;
+  timestamp: string;
+  recovery_action?: string | null;
+  resolved: boolean;
+}
+
+export interface RealtimeVehicleState {
+  vehicle_id: string;
+  vehicle_code: string;
+  status: string;
+  latitude: number;
+  longitude: number;
+  speed_kmh: number;
+  heading: number;
+  current_payload_kg: number;
+  capacity_kg: number;
+  utilization_pct: number;
+  current_task_id?: string | null;
+  current_route: string[];
+  route_status: 'ON_TRACK' | 'DEVIATED' | 'REROUTED' | string;
+  deviation_distance_m: number;
+  estimated_eta_min: number;
+  telemetry_health: string;
+  last_telemetry_timestamp: string;
+  depot_id: string;
+  safety_status: string;
+}
+
+export interface RealtimeOperationalState {
+  timestamp: string;
+  vehicles: RealtimeVehicleState[];
+  bins: BinSensorTelemetry[];
+  critical_bins_count: number;
+  active_alerts: TelemetryAlert[];
+  traffic_condition: string;
+  weather_condition: string;
+  fleet_workload_balance: number;
+  average_eta_minutes: number;
+  disclaimer: string;
+}
+
+export interface TelemetryHealthSummary {
+  total_messages_received: number;
+  valid_messages_count: number;
+  invalid_messages_count: number;
+  duplicate_messages_count: number;
+  stale_vehicles_count: number;
+  telemetry_health_rate_pct: number;
+  vehicle_health: Record<string, string>;
+  bin_health: Record<string, string>;
+  active_alerts_count: number;
+  websocket_clients_connected: number;
+  disclaimer: string;
+}
+
+export interface DepotInfo {
+  depot_id: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  node_id: string;
+  active: boolean;
+  assigned_vehicles_count: number;
+  capacity_vehicles: number;
+}
+
+export interface AuthUser {
+  username: string;
+  email: string;
+  role: 'DISPATCHER' | 'DRIVER' | 'MUNICIPAL_SUPERVISOR' | string;
+  assigned_vehicle_id?: string | null;
+  permissions: string[];
+}
+
+export interface TokenResponse {
+  access_token: string;
+  token_type: string;
+  expires_in_seconds: number;
+  user: AuthUser;
+}
+
+export interface AuditEvent {
+  event_id: string;
+  timestamp: string;
+  actor: string;
+  role: string;
+  action: string;
+  entity_type: string;
+  entity_id?: string | null;
+  reason?: string | null;
+  result: string;
+  details: Record<string, any>;
+}
+
+export interface ScalabilityBenchmarkItem {
+  vehicle_count: number;
+  depot_count: number;
+  telemetry_messages_processed: number;
+  average_processing_latency_ms: number;
+  peak_processing_latency_ms: number;
+  telemetry_throughput_msg_per_sec: number;
+  optimization_execution_time_ms: number;
+  memory_rss_mb: number;
+  status: string;
+}
+
+export interface ScalabilityBenchmarkResult {
+  timestamp: string;
+  benchmarks: ScalabilityBenchmarkItem[];
+  scalability_verdict: string;
+  disclaimer: string;
+}
+
+export interface Phase9ScenarioStat {
+  scenario: string;
+  runs_count: number;
+  telemetry_health_rate_pct: number;
+  route_deviations_detected: number;
+  critical_bins_detected: number;
+  emergency_requests_generated: number;
+  average_eta_recalculation_ms: number;
+  mean_eta_minutes: number;
+  rerouting_success_rate_pct: number;
+  failure_counts: Record<string, number>;
+}
+
+export interface Phase9BenchmarkSummary {
+  total_runs: number;
+  scenarios_evaluated: string[];
+  seeds_evaluated: number[];
+  overall_telemetry_health_rate_pct: number;
+  total_telemetry_messages_generated: number;
+  total_route_deviations_detected: number;
+  total_critical_bins_detected: number;
+  total_emergency_requests_generated: number;
+  emergency_fulfillment_rate_pct: number;
+  average_eta_recalculation_time_ms: number;
+  scenario_stats: Record<string, Phase9ScenarioStat>;
+  failure_counts_by_category: Record<string, number>;
+  disclaimer: string;
+}
+
+// ============================================================================
+// PHASE 10: INTEGRATED COMMAND CENTER & FINAL SYSTEM VALIDATION TYPES
+// ============================================================================
+
+export interface SimulationStepLog {
+  step: number;
+  timestamp: string;
+  action: string;
+  subsystem: string;
+  status: string;
+  details: Record<string, any>;
+}
+
+export interface SimulationDemoState {
+  status: 'IDLE' | 'RUNNING' | 'COMPLETED' | 'ERROR';
+  current_step: number;
+  total_steps: number;
+  elapsed_seconds: number;
+  active_scenario: string;
+  safe_allocation_rate: number;
+  safety_violations: number;
+  deviations_detected: number;
+  breakdown_handled: boolean;
+  emergency_inserted: boolean;
+  steps_log: SimulationStepLog[];
+  final_summary?: Record<string, any>;
+}
+
+export interface ExtendedHealthResponse extends HealthResponse {
+  database?: { status: string; latency_ms: number };
+  telemetry?: { status: string; health_rate_pct: number };
+  websocket?: { status: string; connected_clients: number };
+  simulation?: { status: string; last_run_timestamp?: string };
+  timestamp?: string;
+}
+
+export interface FinalBenchmarkScenarioStat {
+  runs_count: number;
+  baseline_mean_eta_min: number;
+  integrated_mean_eta_min: number;
+  baseline_mean_dist_km: number;
+  integrated_mean_dist_km: number;
+  baseline_workload_balance: number;
+  integrated_workload_balance: number;
+  baseline_eta_mae_min: number;
+  integrated_eta_mae_min: number;
+  emergency_fulfillment_rate_pct: number;
+  safe_assignment_rate_pct: number;
+}
+
+export interface FinalBenchmarkComparison {
+  total_runs: number;
+  scenarios_count: number;
+  seeds_evaluated: number[];
+  eta_accuracy: {
+    baseline_mae_min: number;
+    integrated_mae_min: number;
+    mae_improvement_pct: number;
+    baseline_rmse_min: number;
+    integrated_rmse_min: number;
+    rmse_improvement_pct: number;
+    accuracy_within_10min_baseline_pct: number;
+    accuracy_within_10min_integrated_pct: number;
+    accuracy_within_15min_baseline_pct: number;
+    accuracy_within_15min_integrated_pct: number;
+  };
+  fleet_performance: {
+    baseline_workload_balance: number;
+    integrated_workload_balance: number;
+    workload_balance_improvement_pct: number;
+    safe_assignment_rate_pct: number;
+    unsafe_assignments_prevented: number;
+    emergency_fulfillment_rate_baseline_pct: number;
+    emergency_fulfillment_rate_integrated_pct: number;
+  };
+  system_latency: {
+    average_integrated_decision_ms: number;
+    average_baseline_decision_ms: number;
+  };
+  scenario_summaries: Record<string, FinalBenchmarkScenarioStat>;
+}
+
+
+

@@ -10,6 +10,7 @@ import {
   Info,
   Truck,
   Activity,
+  Radio,
 } from 'lucide-react';
 
 import { StatusBadge } from '../common/StatusBadge';
@@ -21,6 +22,11 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
+  {
+    name: 'Command Center (Phase 10)',
+    path: '/command-center',
+    icon: <Activity className="w-4 h-4 text-emerald-400" />,
+  },
   {
     name: 'Dashboard',
     path: '/dashboard',
@@ -40,6 +46,16 @@ const navItems: NavItem[] = [
     name: 'Dynamic Routing (Phase 6)',
     path: '/dynamic-routing',
     icon: <Compass className="w-4 h-4" />,
+  },
+  {
+    name: 'Fleet Coordination (Phase 7)',
+    path: '/fleet-coordination',
+    icon: <Truck className="w-4 h-4" />,
+  },
+  {
+    name: 'Real-Time Operations (Phase 9)',
+    path: '/real-time-operations',
+    icon: <Radio className="w-4 h-4" />,
   },
   {
     name: 'ETA Analysis',
