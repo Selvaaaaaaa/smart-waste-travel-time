@@ -20,7 +20,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   unit,
   icon,
   subtitle,
-  badgeLabel = 'Demo Data — Phase 1',
+  badgeLabel = 'Operations Mode: Simulation',
   trend,
 }) => {
   return (

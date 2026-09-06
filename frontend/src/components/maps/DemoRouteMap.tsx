@@ -60,7 +60,7 @@ export const DemoRouteMap: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <DemoBadge label="Demo Route — Phase 1" />
+          <DemoBadge label="Operations Mode: Simulation" />
         </div>
       </div>
 
@@ -176,7 +176,7 @@ export const DemoRouteMap: React.FC = () => {
 
         <div className="flex items-center gap-1 text-[11px] text-slate-400">
           <Info className="w-3.5 h-3.5 text-slate-400" />
-          <span>Synthetic coordinates for Phase 1 simulation demonstration only.</span>
+          <span>Operational coordinates for simulated municipal route demonstration.</span>
         </div>
       </div>
     </div>

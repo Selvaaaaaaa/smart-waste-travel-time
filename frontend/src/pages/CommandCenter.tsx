@@ -107,7 +107,7 @@ export const CommandCenter: React.FC = () => {
             <div className="flex items-center gap-3">
               <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                 <Sparkles size={12} className="text-indigo-400 animate-pulse" />
-                Phase 10 Final Release
+                Municipal Control Room
               </span>
               <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                 <Shield size={12} className="text-emerald-400" />
@@ -118,7 +118,7 @@ export const CommandCenter: React.FC = () => {
               Integrated Municipal Command Center
             </h1>
             <p className="text-slate-400 text-sm mt-1 max-w-2xl">
-              End-to-end mission control combining IoT sensor telemetry, sensor fusion, adaptive hybrid ETA prediction, dynamic rerouting, multi-vehicle fleet optimization, and non-negotiable safety guardrails.
+              Real-time mission control combining IoT sensor telemetry, sensor fusion, adaptive hybrid ETA prediction, dynamic rerouting, multi-vehicle fleet optimization, and non-negotiable safety guardrails.
             </p>
           </div>
 
@@ -134,17 +134,18 @@ export const CommandCenter: React.FC = () => {
             <button
               onClick={handleRunFullDemo}
               disabled={isRunningDemo}
+              aria-label="Run Full System Demo"
               className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white rounded-xl shadow-lg shadow-indigo-500/30 text-sm font-bold transition-all flex items-center gap-2"
             >
               {isRunningDemo ? (
                 <>
                   <RotateCw size={16} className="animate-spin" />
-                  Simulating 21 Steps...
+                  Simulating Operations...
                 </>
               ) : (
                 <>
                   <Play size={16} className="fill-white" />
-                  Run Full System Demo (Seed 42)
+                  Run Full System Demo
                 </>
               )}
             </button>
@@ -306,7 +307,7 @@ export const CommandCenter: React.FC = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 mt-6">
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3.5 text-center relative flex flex-col justify-between">
-            <div className="text-[10px] font-bold text-indigo-400 uppercase">Phase 9 Layer</div>
+            <div className="text-[10px] font-bold text-indigo-400 uppercase">Layer 1: Field Sensing</div>
             <div className="my-2 flex justify-center">
               <Radio size={24} className="text-indigo-400" />
             </div>
@@ -318,7 +319,7 @@ export const CommandCenter: React.FC = () => {
           </div>
 
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3.5 text-center relative flex flex-col justify-between">
-            <div className="text-[10px] font-bold text-blue-400 uppercase">Phase 9 Layer</div>
+            <div className="text-[10px] font-bold text-blue-400 uppercase">Layer 2: Data Fusion</div>
             <div className="my-2 flex justify-center">
               <Cpu size={24} className="text-blue-400" />
             </div>
@@ -330,19 +331,19 @@ export const CommandCenter: React.FC = () => {
           </div>
 
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3.5 text-center relative flex flex-col justify-between">
-            <div className="text-[10px] font-bold text-teal-400 uppercase">Phase 4/5 Layer</div>
+            <div className="text-[10px] font-bold text-teal-400 uppercase">Layer 3: Predictive ML</div>
             <div className="my-2 flex justify-center">
               <Clock size={24} className="text-teal-400" />
             </div>
             <div className="text-xs font-bold text-white">Adaptive Hybrid ETA</div>
-            <div className="text-[10px] text-slate-400 mt-1">Random Forest + Baseline Heuristic</div>
+            <div className="text-[10px] text-slate-400 mt-1">Random Forest + Baseline Speed</div>
             <div className="mt-2 text-[10px] text-teal-400 font-semibold bg-teal-500/10 py-0.5 rounded">
               -29.8% Error
             </div>
           </div>
 
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3.5 text-center relative flex flex-col justify-between">
-            <div className="text-[10px] font-bold text-cyan-400 uppercase">Phase 6 Layer</div>
+            <div className="text-[10px] font-bold text-cyan-400 uppercase">Layer 4: Spatial Routing</div>
             <div className="my-2 flex justify-center">
               <Navigation size={24} className="text-cyan-400" />
             </div>
@@ -354,7 +355,7 @@ export const CommandCenter: React.FC = () => {
           </div>
 
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3.5 text-center relative flex flex-col justify-between">
-            <div className="text-[10px] font-bold text-purple-400 uppercase">Phase 7/8 Layer</div>
+            <div className="text-[10px] font-bold text-purple-400 uppercase">Layer 5: Fleet Operations</div>
             <div className="my-2 flex justify-center">
               <Truck size={24} className="text-purple-400" />
             </div>
@@ -366,7 +367,7 @@ export const CommandCenter: React.FC = () => {
           </div>
 
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3.5 text-center relative flex flex-col justify-between">
-            <div className="text-[10px] font-bold text-emerald-400 uppercase">Phase 2/8 Layer</div>
+            <div className="text-[10px] font-bold text-emerald-400 uppercase">Layer 6: Safety Control</div>
             <div className="my-2 flex justify-center">
               <Shield size={24} className="text-emerald-400" />
             </div>
@@ -378,7 +379,7 @@ export const CommandCenter: React.FC = () => {
           </div>
 
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3.5 text-center relative flex flex-col justify-between">
-            <div className="text-[10px] font-bold text-green-400 uppercase">Phase 10 Release</div>
+            <div className="text-[10px] font-bold text-green-400 uppercase">Layer 7: Control Room</div>
             <div className="my-2 flex justify-center">
               <CheckCircle size={24} className="text-green-400" />
             </div>
@@ -551,7 +552,7 @@ export const CommandCenter: React.FC = () => {
           <div>
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <Layers size={20} className="text-emerald-400" />
-              Phase 10 Final 50-Run Benchmark Evaluation
+              Municipal Operations Performance Evaluation
             </h2>
             <p className="text-xs text-slate-400 mt-0.5">
               10 operational scenarios $\times$ 5 deterministic seeds (42, 43, 44, 45, 46). Zero fabricated metrics.

@@ -113,7 +113,7 @@ export const DynamicRouting: React.FC = () => {
           vehicle_capacity_kg: 8000.0,
           initial_payload_kg: 1000.0,
           max_shift_hours: 4.0,
-          notes: 'Phase 6 Live Municipal Route Session',
+          notes: 'Live Municipal Route Session',
         });
         setActiveTrip(newTrip);
       }
@@ -261,7 +261,7 @@ export const DynamicRouting: React.FC = () => {
         <div className="space-y-1.5">
           <div className="flex items-center gap-2.5">
             <span className="px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
-              Phase 6 Active
+              Dynamic Routing Active
             </span>
             <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
               <Sparkles className="w-3 h-3" /> Adaptive Hybrid ETA Enabled
@@ -273,7 +273,7 @@ export const DynamicRouting: React.FC = () => {
           </h1>
           <p className="text-sm text-slate-300 max-w-3xl">
             Simulates dynamic municipal collection trips under unexpected road closures, traffic spikes, and extreme weather.
-            Candidate paths are evaluated against hard safety constraints and scored using Phase 5 Adaptive Hybrid ETA predictions.
+            Candidate paths are evaluated against hard safety constraints and scored using Adaptive Hybrid ETA predictions.
           </p>
         </div>
 
@@ -337,7 +337,7 @@ export const DynamicRouting: React.FC = () => {
             className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-amber-600 hover:bg-amber-500 text-white transition shadow-md hover:shadow-amber-600/30 disabled:opacity-50"
           >
             <Zap className={`w-3.5 h-3.5 ${runningBenchmark ? 'animate-bounce' : ''}`} />
-            {runningBenchmark ? 'Running 35 Runs...' : 'Run Phase 6 Benchmark Suite'}
+            {runningBenchmark ? 'Running 35 Runs...' : 'Run Routing Benchmark Suite'}
           </button>
         </div>
       </div>
@@ -492,7 +492,7 @@ export const DynamicRouting: React.FC = () => {
                 </h3>
               </div>
               <span className="text-xs text-slate-400">
-                Evaluated with Phase 5 Adaptive Hybrid ETA
+                Evaluated with Adaptive Hybrid ETA
               </span>
             </div>
 
@@ -806,7 +806,7 @@ export const DynamicRouting: React.FC = () => {
             <div>
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <TrendingDown className="w-5 h-5 text-emerald-400" />
-                Phase 6 Empirical Benchmark Results (35 Simulation Runs)
+                Empirical Routing Benchmark Results (35 Simulation Runs)
               </h2>
               <p className="text-xs text-slate-400">
                 Evaluates 7 scenarios across 5 random seeds (42, 43, 44, 45, 46) comparing Static Baseline vs. Dynamic Rerouting Engine.

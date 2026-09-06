@@ -43,7 +43,7 @@ export const WasteVolumeChart: React.FC<WasteVolumeChartProps> = ({
             <p className="text-xs text-slate-400">Weekly accumulation trend (metric tons)</p>
           </div>
         </div>
-        <DemoBadge label="Demo Data — Phase 1" />
+        <DemoBadge label="Operations Mode: Simulation" />
       </div>
 
       <div className="h-64 w-full pt-2">

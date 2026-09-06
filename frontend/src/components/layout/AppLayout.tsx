@@ -68,10 +68,10 @@ export const AppLayout: React.FC = () => {
         <footer className="border-t border-slate-800/80 bg-slate-950/60 px-4 lg:px-8 py-4 text-center text-xs text-slate-400">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2 max-w-7xl mx-auto">
             <span>
-              Smart Waste Collection Travel-Time & Route Simulator — Academic Research Prototype
+              SMART CITY WASTE OPERATIONS — Intelligent Waste Collection & Fleet Management Platform
             </span>
             <span className="font-mono text-slate-400">
-              Phase 1: Project Foundation & Operations Dashboard
+              Operations Mode: Simulation
             </span>
           </div>
         </footer>

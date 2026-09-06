@@ -42,7 +42,7 @@ export const ETAErrorChart: React.FC<ETAErrorChartProps> = ({
             <p className="text-xs text-slate-400">Absolute prediction deviation |Predicted - Actual| (min)</p>
           </div>
         </div>
-        <DemoBadge label="Demo Metrics — Phase 1" />
+        <DemoBadge label="Operations Mode: Simulation" />
       </div>
 
       <div className="h-64 w-full pt-2">

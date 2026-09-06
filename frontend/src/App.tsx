@@ -11,6 +11,12 @@ import { FleetCoordination } from './pages/FleetCoordination';
 import { RealTimeOperations } from './pages/RealTimeOperations';
 import { CommandCenter } from './pages/CommandCenter';
 import { SystemInformation } from './pages/SystemInformation';
+import { EmergencyRequests } from './pages/EmergencyRequests';
+import { SmartBins } from './pages/SmartBins';
+import { AlertsIncidents } from './pages/AlertsIncidents';
+import { SystemHealth } from './pages/SystemHealth';
+import { AuditLogs } from './pages/AuditLogs';
+import { UsersRoles } from './pages/UsersRoles';
 
 export const App: React.FC = () => {
   return (
@@ -22,18 +28,29 @@ export const App: React.FC = () => {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="scenarios" element={<ScenarioSimulator />} />
           <Route path="routes" element={<RoutesPage />} />
+          <Route path="collection-tasks" element={<RoutesPage />} />
           <Route path="dynamic-routing" element={<DynamicRouting />} />
+          <Route path="route-planning" element={<DynamicRouting />} />
           <Route path="fleet-coordination" element={<FleetCoordination />} />
+          <Route path="fleet-management" element={<FleetCoordination />} />
           <Route path="real-time-operations" element={<RealTimeOperations />} />
+          <Route path="live-operations" element={<RealTimeOperations />} />
+          <Route path="emergency-requests" element={<EmergencyRequests />} />
+          <Route path="smart-bins" element={<SmartBins />} />
+          <Route path="alerts-incidents" element={<AlertsIncidents />} />
+          <Route path="system-health" element={<SystemHealth />} />
+          <Route path="audit-logs" element={<AuditLogs />} />
+          <Route path="users-roles" element={<UsersRoles />} />
           <Route path="eta-analysis" element={<ETAAnalysis />} />
           <Route path="experiments" element={<Experiments />} />
+          <Route path="performance-analytics" element={<Experiments />} />
           <Route path="system-information" element={<SystemInformation />} />
+          <Route path="diagnostics" element={<SystemInformation />} />
           <Route path="*" element={<Navigate to="/command-center" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
 };
-
 
 export default App;

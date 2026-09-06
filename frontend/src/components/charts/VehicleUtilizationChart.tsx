@@ -48,7 +48,7 @@ export const VehicleUtilizationChart: React.FC<VehicleUtilizationChartProps> = (
             <p className="text-xs text-slate-400">Current load relative to rated tonnage (%)</p>
           </div>
         </div>
-        <DemoBadge label="Demo Metrics — Phase 1" />
+        <DemoBadge label="Operations Mode: Simulation" />
       </div>
 
       <div className="h-64 w-full pt-2">

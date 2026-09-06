@@ -225,7 +225,7 @@ export const RealTimeOperations: React.FC = () => {
                   REAL-TIME IoT TELEMETRY & OPERATIONS
                 </h1>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                  PHASE 9
+                  LIVE TELEMETRY
                 </span>
                 <span
                   className={`px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider flex items-center gap-1 ${
@@ -659,7 +659,7 @@ export const RealTimeOperations: React.FC = () => {
               <div className="flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-cyan-400" />
                 <h2 className="text-base font-bold text-white font-mono">
-                  PHASE 9 CONTROLLED BENCHMARK & SCALABILITY SUITE
+                  TELEMETRY CONTROLLED BENCHMARK & SCALABILITY SUITE
                 </h2>
               </div>
               <p className="text-xs text-slate-400 mt-1">

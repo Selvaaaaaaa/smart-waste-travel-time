@@ -74,7 +74,7 @@ export const Routes: React.FC = () => {
             <RefreshCw className="w-3.5 h-3.5" />
             Refresh Table
           </button>
-          <DemoBadge label="Demo Data — Phase 1" />
+          <DemoBadge label="Operations Mode: Simulation" />
         </div>
       </div>
 
@@ -211,7 +211,7 @@ export const Routes: React.FC = () => {
 
           <div className="p-3 bg-slate-900/60 border-t border-slate-700/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
             <span>Showing {routes.length} active collection routes</span>
-            <DemoBadge label="Demo Data — Phase 1" className="text-[10px]" />
+            <DemoBadge label="Operations Mode: Simulation" className="text-[10px]" />
           </div>
         </div>
       )}

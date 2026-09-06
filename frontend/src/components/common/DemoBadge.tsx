@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from 'lucide-react';
+import { Radio } from 'lucide-react';
 
 interface DemoBadgeProps {
   label?: string;
@@ -7,16 +7,18 @@ interface DemoBadgeProps {
 }
 
 export const DemoBadge: React.FC<DemoBadgeProps> = ({
-  label = 'Demo Data — Phase 1',
+  label = 'Operations Mode: Simulation',
   className = '',
 }) => {
   return (
     <span
-      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 tracking-wide ${className}`}
-      title="Synthetic research placeholder for Phase 1"
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 tracking-wide ${className}`}
+      title="Environment running in simulated municipal operations mode"
     >
-      <Tag className="w-3 h-3 text-amber-400" />
+      <Radio className="w-3 h-3 text-emerald-400 animate-pulse" />
       {label}
     </span>
   );
 };
+
+export default DemoBadge;

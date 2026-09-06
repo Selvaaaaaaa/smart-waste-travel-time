@@ -84,7 +84,7 @@ export const Dashboard: React.FC = () => {
             <RefreshCw className="w-3.5 h-3.5" />
             Refresh Telemetry
           </button>
-          <DemoBadge label="Demo Data — Phase 1" />
+          <DemoBadge label="Operations Mode: Simulation" />
         </div>
       </div>
 
@@ -95,14 +95,14 @@ export const Dashboard: React.FC = () => {
           value={data.waste_volume}
           unit={data.waste_volume_unit}
           icon={<Scale className="w-4 h-4" />}
-          badgeLabel="Demo Data — Phase 1"
+          badgeLabel="Operations Mode: Simulation"
           trend={{ value: '+4.2% vs yesterday', isPositive: false }}
         />
         <MetricCard
           title="Active Routes"
           value={data.active_routes}
           icon={<RouteIcon className="w-4 h-4" />}
-          badgeLabel="Demo Data — Phase 1"
+          badgeLabel="Operations Mode: Simulation"
           trend={{ value: '100% assigned', isPositive: true }}
         />
         <MetricCard
@@ -110,28 +110,28 @@ export const Dashboard: React.FC = () => {
           value={data.average_eta_min}
           unit="min"
           icon={<Clock className="w-4 h-4" />}
-          badgeLabel="Demo Data — Phase 1"
+          badgeLabel="Operations Mode: Simulation"
           trend={{ value: '-3 min under baseline', isPositive: true }}
         />
         <MetricCard
           title="ETA Accuracy"
           value={`${data.eta_accuracy_pct}%`}
           icon={<Target className="w-4 h-4" />}
-          badgeLabel="Demo Data — Phase 1"
+          badgeLabel="Operations Mode: Simulation"
           trend={{ value: 'Within ±5 min tolerance', isPositive: true }}
         />
         <MetricCard
           title="Available Vehicles"
           value={data.available_vehicles}
           icon={<Truck className="w-4 h-4" />}
-          badgeLabel="Demo Data — Phase 1"
+          badgeLabel="Operations Mode: Simulation"
           trend={{ value: '2 in reserve maintenance', isPositive: true }}
         />
         <MetricCard
           title="Workload Status"
           value={data.workload_status}
           icon={<ShieldCheck className="w-4 h-4" />}
-          badgeLabel="Demo Data — Phase 1"
+          badgeLabel="Operations Mode: Simulation"
           trend={{ value: 'No safety violations', isPositive: true }}
         />
       </div>
@@ -147,7 +147,7 @@ export const Dashboard: React.FC = () => {
               Environmental, logistical, and municipal restrictions affecting collection travel-times
             </p>
           </div>
-          <DemoBadge label="Demo Data — Phase 1" />
+          <DemoBadge label="Operations Mode: Simulation" />
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">

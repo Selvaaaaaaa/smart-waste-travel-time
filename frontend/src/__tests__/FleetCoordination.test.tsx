@@ -387,7 +387,7 @@ describe('Phase 8 Fleet Coordination & Advanced Optimization Platform', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('Fleet Coordination (Phase 7)')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Fleet Management/i })).toBeInTheDocument();
   });
 
   it('2. Loads Fleet Coordination Page and displays KPI Summary Cards', async () => {
@@ -451,13 +451,13 @@ describe('Phase 8 Fleet Coordination & Advanced Optimization Platform', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText('Phase 8 Benchmark (50 Runs)')).toBeInTheDocument();
+      expect(screen.getByText('Optimization Benchmark (50 Runs)')).toBeInTheDocument();
     });
 
-    const benchmarkTabBtn = screen.getByText('Phase 8 Benchmark (50 Runs)');
+    const benchmarkTabBtn = screen.getByText('Optimization Benchmark (50 Runs)');
     fireEvent.click(benchmarkTabBtn);
 
-    expect(screen.getByText('PHASE 8 CONTROLLED BENCHMARK SUITE')).toBeInTheDocument();
+    expect(screen.getByText('FLEET OPTIMIZATION BENCHMARK EVALUATION')).toBeInTheDocument();
     const runBenchmarkBtn = screen.getByText('Re-Run Benchmark Suite (50 Runs)');
     fireEvent.click(runBenchmarkBtn);
 

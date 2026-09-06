@@ -183,7 +183,7 @@ describe('Phase 10 CommandCenter Component', () => {
 
     // Title banner
     expect(screen.getByText('Integrated Municipal Command Center')).toBeInTheDocument();
-    expect(screen.getByText('Phase 10 Final Release')).toBeInTheDocument();
+    expect(screen.getByText('Municipal Control Room')).toBeInTheDocument();
     expect(screen.getByText('System Integration Verified')).toBeInTheDocument();
 
     // KPI Cards
@@ -217,7 +217,7 @@ describe('Phase 10 CommandCenter Component', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText('Phase 10 Final 50-Run Benchmark Evaluation')).toBeInTheDocument();
+      expect(screen.getByText('Municipal Operations Performance Evaluation')).toBeInTheDocument();
       expect(screen.getByText('50 Controlled Trials Complete')).toBeInTheDocument();
       expect(screen.getByText('NORMAL OPERATION')).toBeInTheDocument();
       expect(screen.getByText('20.32 min')).toBeInTheDocument();

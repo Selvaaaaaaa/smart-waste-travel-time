@@ -19,10 +19,10 @@ export const SystemInformation: React.FC = () => {
         <div>
           <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
             <Info className="w-6 h-6 text-emerald-400" />
-            System Information & Research Architecture
+            System Information & Operational Architecture
           </h1>
           <p className="text-sm text-slate-400 mt-0.5">
-            Academic specifications, mathematical definitions, and physical safety constraints.
+            Operational specifications, mathematical definitions, and physical safety constraints.
           </p>
         </div>
         <StatusBadge status="SYSTEM ONLINE" />
@@ -34,7 +34,7 @@ export const SystemInformation: React.FC = () => {
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 text-emerald-400" />
             <span className="font-bold text-emerald-300 text-sm">
-              PROJECT STATUS: Phase 2 — Database & Operational Data Complete
+              SYSTEM STATUS: Operational Infrastructure & Municipal Data Services Online
             </span>
           </div>
           <p className="text-xs text-emerald-200/80">
@@ -42,7 +42,7 @@ export const SystemInformation: React.FC = () => {
           </p>
         </div>
         <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-mono font-bold shrink-0 text-center">
-          Phase 2 Active
+          Operations Active
         </span>
       </div>
 
@@ -96,13 +96,13 @@ export const SystemInformation: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
           <div className="p-4 bg-slate-900/60 border border-slate-700/50 rounded-lg space-y-1.5">
-            <span className="text-xs font-bold text-slate-300 block">Baseline Model (Phase 2/3)</span>
+            <span className="text-xs font-bold text-slate-300 block">Baseline Model (Historical Averages)</span>
             <p className="text-xs text-slate-400 leading-relaxed">
               Simple historical route average and static speed-distance formula (e.g. constant 25 km/h + fixed stop dwell). Serves as the benchmark comparator to quantify predictive gains.
             </p>
           </div>
           <div className="p-4 bg-slate-900/60 border border-slate-700/50 rounded-lg space-y-1.5">
-            <span className="text-xs font-bold text-cyan-300 block">Context-Aware ML Model (Phase 3)</span>
+            <span className="text-xs font-bold text-cyan-300 block">Context-Aware ML Model (Ensemble)</span>
             <p className="text-xs text-slate-400 leading-relaxed">
               Supervised gradient-boosted / ensemble regression model trained on feature vectors incorporating dynamic environmental shocks and volume multipliers to compute precise leg ETAs.
             </p>
@@ -221,7 +221,7 @@ export const SystemInformation: React.FC = () => {
               <li>• SQLAlchemy 2.0 ORM</li>
               <li>• Async & Synced Sessions</li>
               <li>• Docker Containerization</li>
-              <li>• Relational Schema (Phase 2)</li>
+              <li>• Relational Schema & Telemetry DB</li>
             </ul>
           </div>
 

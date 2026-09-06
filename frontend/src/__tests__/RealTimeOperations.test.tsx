@@ -237,7 +237,7 @@ describe('Phase 9 Real-Time IoT Telemetry & Operations Platform', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('Real-Time Operations (Phase 9)')).toBeInTheDocument();
+    expect(screen.getByText(/Live Operations/i)).toBeInTheDocument();
   });
 
   it('2. Loads Real-Time Operations Page and displays KPI Summary Cards', async () => {
@@ -285,7 +285,7 @@ describe('Phase 9 Real-Time IoT Telemetry & Operations Platform', () => {
 
     // Switch to Benchmarks tab
     fireEvent.click(screen.getByText('Benchmarks & Scalability'));
-    expect(screen.getByText('PHASE 9 CONTROLLED BENCHMARK & SCALABILITY SUITE')).toBeInTheDocument();
+    expect(screen.getByText('TELEMETRY CONTROLLED BENCHMARK & SCALABILITY SUITE')).toBeInTheDocument();
 
     // Switch to Audit Log tab
     fireEvent.click(screen.getByText('Audit Log'));

@@ -147,7 +147,7 @@ export const Experiments: React.FC = () => {
             </div>
             <div>
               <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                Phase 5 Central Research Question
+                Operational Benchmark Objective
               </div>
               <h2 className="text-base font-bold text-white mt-0.5">
                 "Does an Adaptive Hybrid ETA System Improve Travel-Time Prediction?"
