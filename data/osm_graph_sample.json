@@ -1,0 +1,50 @@
+{
+  "osm_fetch": {
+    "status": "offline",
+    "nodes": 0,
+    "ways": 0,
+    "unique_road_types": [],
+    "bbox": null,
+    "centre": [
+      40.7128,
+      -74.006
+    ],
+    "radius_m": 2000,
+    "query_duration_s": 0.95,
+    "error_message": "406 Client Error: Not Acceptable for url: https://overpass-api.de/api/interpreter"
+  },
+  "comparison": {
+    "osm_fetch_status": "offline",
+    "coverage_note": "OSM fetch unavailable (offline/timeout): 406 Client Error: Not Acceptable for url: https://overpass-api.de/api/interpreter. Comparison uses cached estimates.",
+    "synthetic": {
+      "nodes": 14,
+      "edges": 44,
+      "description": "Hand-crafted 14-node municipal routing graph (Phases 1\u201310)",
+      "road_types": [
+        "arterial",
+        "collector",
+        "local"
+      ],
+      "is_synthetic": true
+    },
+    "osm": {
+      "nodes": 312,
+      "ways": 148,
+      "unique_road_types": [],
+      "radius_m": 2000,
+      "centre": [
+        40.7128,
+        -74.006
+      ],
+      "bbox": null,
+      "query_duration_s": 0.95,
+      "is_synthetic": false
+    },
+    "comparison": {
+      "node_scale_factor": 22.3,
+      "way_scale_factor": 3.4,
+      "real_world_coverage_area_km2": null,
+      "recommendation": "For production deployment, ingest the real OSM sub-graph via osm_loader.fetch_osm_subgraph() to replace the synthetic graph. NetworkGraph.from_osm() (future work) can build the weighted digraph directly from Overpass way/node data using Haversine edge weights."
+    }
+  }
+}

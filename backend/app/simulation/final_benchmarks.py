@@ -319,6 +319,51 @@ class FinalBenchmarkRunner:
         within_15_base = round((sum(1 for r in all_results if r["baseline"]["eta_abs_error_min"] <= 15.0) / total_runs) * 100.0, 1)
         within_15_int = round((sum(1 for r in all_results if r["integrated"]["eta_abs_error_min"] <= 15.0) / total_runs) * 100.0, 1)
 
+        # ------------------------------------------------------------------
+        # Scenario Group Metrics: NORMAL vs DISRUPTED breakdown
+        # ------------------------------------------------------------------
+        NORMAL_SCENARIOS = {"NORMAL_OPERATION", "HIGH_WASTE"}
+        DISRUPTED_SCENARIOS = set(self.SCENARIOS) - NORMAL_SCENARIOS
+
+        normal_runs = [r for r in all_results if r["scenario"] in NORMAL_SCENARIOS]
+        disrupted_runs = [r for r in all_results if r["scenario"] in DISRUPTED_SCENARIOS]
+
+        def _group_stats(runs: list) -> dict:
+            if not runs:
+                return {}
+            n = len(runs)
+            b_mae_g = round(sum(r["baseline"]["eta_abs_error_min"] for r in runs) / n, 2)
+            i_mae_g = round(sum(r["integrated"]["eta_abs_error_min"] for r in runs) / n, 2)
+            b_rmse_g = round(math.sqrt(sum(r["baseline"]["eta_abs_error_min"] ** 2 for r in runs) / n), 2)
+            i_rmse_g = round(math.sqrt(sum(r["integrated"]["eta_abs_error_min"] ** 2 for r in runs) / n), 2)
+            mae_imp = round(((b_mae_g - i_mae_g) / max(0.01, b_mae_g)) * 100.0, 2)
+            rmse_imp = round(((b_rmse_g - i_rmse_g) / max(0.01, b_rmse_g)) * 100.0, 2)
+            b_wl_g = round(sum(r["baseline"]["workload_balance"] for r in runs) / n, 4)
+            i_wl_g = round(sum(r["integrated"]["workload_balance"] for r in runs) / n, 4)
+            wl_imp = round(((i_wl_g - b_wl_g) / max(0.01, b_wl_g)) * 100.0, 2)
+            within_10_b = round((sum(1 for r in runs if r["baseline"]["eta_abs_error_min"] <= 10.0) / n) * 100.0, 1)
+            within_10_i = round((sum(1 for r in runs if r["integrated"]["eta_abs_error_min"] <= 10.0) / n) * 100.0, 1)
+            return {
+                "run_count": n,
+                "baseline_mae_min": b_mae_g,
+                "integrated_mae_min": i_mae_g,
+                "mae_improvement_pct": mae_imp,
+                "baseline_rmse_min": b_rmse_g,
+                "integrated_rmse_min": i_rmse_g,
+                "rmse_improvement_pct": rmse_imp,
+                "baseline_workload_balance": b_wl_g,
+                "integrated_workload_balance": i_wl_g,
+                "workload_balance_improvement_pct": wl_imp,
+                "accuracy_within_10min_baseline_pct": within_10_b,
+                "accuracy_within_10min_integrated_pct": within_10_i,
+                "scenarios": sorted(list(NORMAL_SCENARIOS if "NORMAL_OPERATION" in [r["scenario"] for r in runs] else DISRUPTED_SCENARIOS)),
+            }
+
+        scenario_group_metrics = {
+            "NORMAL": _group_stats(normal_runs),
+            "DISRUPTED": _group_stats(disrupted_runs),
+        }
+
         comparison = {
             "total_runs": total_runs,
             "scenarios_count": len(self.SCENARIOS),
@@ -348,6 +393,7 @@ class FinalBenchmarkRunner:
                 "average_integrated_decision_ms": round(sum(r["integrated"]["execution_ms"] for r in all_results) / total_runs, 2),
                 "average_baseline_decision_ms": round(sum(r["baseline"]["execution_ms"] for r in all_results) / total_runs, 2),
             },
+            "scenario_group_metrics": scenario_group_metrics,
             "scenario_summaries": scenario_summaries,
             "all_runs": all_results,
         }

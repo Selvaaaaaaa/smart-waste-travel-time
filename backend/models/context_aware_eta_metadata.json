@@ -2,7 +2,7 @@
   "model_name": "Context-Aware ETA (Random Forest)",
   "model_type": "random_forest",
   "model_version": "1.0.0",
-  "training_date": "2026-09-06T13:02:16.552069+00:00",
+  "training_date": "2026-09-07T10:33:35.198845+00:00",
   "training_row_count": 48,
   "testing_row_count": 12,
   "total_dataset_rows": 60,
@@ -31,102 +31,114 @@
   "baseline_speed_kmh": 25.0,
   "metrics": {
     "baseline": {
-      "mae": 36.77,
-      "rmse": 43.6,
-      "mean_error": -36.77,
-      "median_absolute_error": 29.15,
+      "mae": 36.68,
+      "rmse": 43.43,
+      "mean_error": -36.68,
+      "median_absolute_error": 28.95,
       "within_tolerance_pct": 0.0,
       "tolerance_minutes": 10.0,
       "sample_count": 12
     },
     "context_aware": {
-      "mae": 4.07,
-      "rmse": 4.91,
-      "mean_error": -1.28,
-      "median_absolute_error": 3.93,
-      "within_tolerance_pct": 100.0,
+      "mae": 3.85,
+      "rmse": 5.09,
+      "mean_error": -1.53,
+      "median_absolute_error": 2.64,
+      "within_tolerance_pct": 91.67,
       "tolerance_minutes": 10.0,
       "sample_count": 12
     },
-    "mae_improvement_pct": 88.93,
-    "rmse_improvement_pct": 88.74,
+    "mae_improvement_pct": 89.5,
+    "rmse_improvement_pct": 88.28,
     "is_improved": true
   },
   "feature_importances": [
     {
+      "feature": "visibility_km",
+      "importance": 0.308
+    },
+    {
       "feature": "average_speed_kmh",
-      "importance": 0.2727
+      "importance": 0.2248
     },
     {
       "feature": "congestion_index",
-      "importance": 0.2089
+      "importance": 0.1935
     },
     {
       "feature": "rainfall_mm",
-      "importance": 0.1811
-    },
-    {
-      "feature": "visibility_km",
-      "importance": 0.1639
+      "importance": 0.0969
     },
     {
       "feature": "distance_km",
-      "importance": 0.0768
+      "importance": 0.0813
     },
     {
       "feature": "waste_volume_tons",
-      "importance": 0.0692
-    },
-    {
-      "feature": "traffic_level_MEDIUM",
-      "importance": 0.0059
-    },
-    {
-      "feature": "day_of_week",
-      "importance": 0.0041
+      "importance": 0.0676
     },
     {
       "feature": "hour_of_day",
-      "importance": 0.0033
+      "importance": 0.004
+    },
+    {
+      "feature": "traffic_level_MEDIUM",
+      "importance": 0.0038
+    },
+    {
+      "feature": "day_of_week",
+      "importance": 0.0032
     },
     {
       "feature": "event_radius",
-      "importance": 0.0023
-    },
-    {
-      "feature": "traffic_level_LOW",
-      "importance": 0.0021
+      "importance": 0.0024
     },
     {
       "feature": "event_level_NONE",
-      "importance": 0.0013
+      "importance": 0.0019
+    },
+    {
+      "feature": "traffic_level_LOW",
+      "importance": 0.0017
     },
     {
       "feature": "road_restriction_type_CONSTRUCTION",
-      "importance": 0.0012
+      "importance": 0.0017
     },
     {
       "feature": "is_peak_hour",
-      "importance": 0.0011
-    },
-    {
-      "feature": "event_level_HIGH",
-      "importance": 0.0011
-    },
-    {
-      "feature": "weather_condition_CLEAR",
-      "importance": 0.0007
-    },
-    {
-      "feature": "weather_condition_CLOUDY",
-      "importance": 0.0007
-    },
-    {
-      "feature": "road_restriction_severity_HIGH",
-      "importance": 0.0007
+      "importance": 0.0012
     },
     {
       "feature": "event_level_MEDIUM",
+      "importance": 0.0012
+    },
+    {
+      "feature": "road_restriction_severity_LOW",
+      "importance": 0.001
+    },
+    {
+      "feature": "road_restriction_severity_MEDIUM",
+      "importance": 0.001
+    },
+    {
+      "feature": "event_level_HIGH",
+      "importance": 0.0008
+    },
+    {
+      "feature": "road_restriction_severity_NONE",
+      "importance": 0.0007
+    },
+    {
+      "feature": "weather_condition_CLEAR",
+      "importance": 0.0005
+    },
+    {
+      "feature": "road_restriction_severity_HIGH",
+      "importance": 0.0005
+    },
+    {
+      "feature": "road_restriction_type_LANE_RESTRICTION",
       "importance": 0.0004
     },
     {
@@ -134,23 +146,19 @@
       "importance": 0.0004
     },
     {
-      "feature": "road_restriction_severity_NONE",
-      "importance": 0.0004
-    },
-    {
-      "feature": "traffic_level_SEVERE",
-      "importance": 0.0003
-    },
-    {
-      "feature": "road_restriction_severity_LOW",
-      "importance": 0.0003
-    },
-    {
       "feature": "weather_condition_LIGHT_RAIN",
+      "importance": 0.0003
+    },
+    {
+      "feature": "road_restriction_type_PARTIAL_CLOSURE",
+      "importance": 0.0003
+    },
+    {
+      "feature": "weather_condition_CLOUDY",
       "importance": 0.0002
     },
     {
-      "feature": "weather_condition_STORM",
+      "feature": "traffic_level_HIGH",
       "importance": 0.0002
     },
     {
@@ -158,27 +166,19 @@
       "importance": 0.0002
     },
     {
-      "feature": "road_restriction_type_NONE",
-      "importance": 0.0002
-    },
-    {
       "feature": "weather_condition_HEAVY_RAIN",
       "importance": 0.0001
     },
     {
-      "feature": "road_restriction_type_LANE_RESTRICTION",
+      "feature": "traffic_level_SEVERE",
       "importance": 0.0001
     },
     {
-      "feature": "traffic_level_HIGH",
-      "importance": 0.0
+      "feature": "road_restriction_type_NONE",
+      "importance": 0.0001
     },
     {
-      "feature": "road_restriction_type_PARTIAL_CLOSURE",
-      "importance": 0.0
-    },
-    {
-      "feature": "road_restriction_severity_MEDIUM",
+      "feature": "weather_condition_STORM",
       "importance": 0.0
     }
   ],

@@ -150,3 +150,64 @@ class SafetyService:
                     return work_res
 
         return SafetyValidationResult(is_valid=True)
+
+    # ------------------------------------------------------------------
+    # Service Time-Window Constraint
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def validate_service_time_window(
+        arrival_minutes_from_shift_start: float,
+        location_node: str,
+        earliest_minute: float,
+        latest_minute: float,
+        label: str = "",
+    ) -> "SafetyValidationResult":
+        """Validate that a projected arrival time falls within the contracted
+        customer service window for a collection zone.
+
+        Delegates to TimeWindowService to enforce SLA time-window constraints.
+        """
+        from app.services.time_window_service import TimeWindowService, TimeWindow
+        window = TimeWindow(
+            location_node=location_node,
+            earliest_minute=earliest_minute,
+            latest_minute=latest_minute,
+            label=label or location_node,
+        )
+        return TimeWindowService.validate_time_window(arrival_minutes_from_shift_start, window)
+
+    # ------------------------------------------------------------------
+    # Regulatory Driving-Hour Constraint (EC 561/2006)
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def validate_regulatory_driving_hours(
+        total_driving_minutes: float,
+        break_minutes_taken: float,
+        additional_driving_minutes: float,
+        continuous_driving_minutes: Optional[float] = None,
+        weekly_driving_minutes: float = 0.0,
+        daily_limit_extended: bool = False,
+    ) -> "SafetyValidationResult":
+        """Validate that adding more driving time keeps the driver within EU/UK HGV
+        regulatory limits (EC Regulation 561/2006):
+
+        - Max 4.5 h continuous driving without a 45-min qualifying break.
+        - Max 9 h daily driving (10 h at most twice per week).
+        - Max 56 h weekly driving.
+        """
+        from app.services.time_window_service import TimeWindowService, DrivingHoursRecord
+        record = DrivingHoursRecord(
+            total_driving_minutes=total_driving_minutes,
+            break_minutes_taken=break_minutes_taken,
+            continuous_driving_minutes=(
+                continuous_driving_minutes
+                if continuous_driving_minutes is not None
+                else total_driving_minutes
+            ),
+            weekly_driving_minutes=weekly_driving_minutes,
+            daily_limit_extended=daily_limit_extended,
+        )
+        return TimeWindowService.validate_regulatory_driving_hours(record, additional_driving_minutes)
+

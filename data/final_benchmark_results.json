@@ -1,12 +1,11 @@
 {
-  "timestamp": "2026-09-06T12:30:33.529528",
-  "phase": 10,
+  "timestamp": "2026-09-07T10:36:12.661265",
   "deterministic_simulation": {
     "seed": 42,
     "status": "PASS",
     "metrics": {
       "simulation_id": "FULL_SYSTEM_DEMO_SEED_42",
-      "execution_time_seconds": 1.746,
+      "execution_time_seconds": 2.502,
       "steps_completed": 21,
       "total_vehicles": 6,
       "active_vehicles": 5,
@@ -31,15 +30,15 @@
     ],
     "eta_accuracy": {
       "baseline_mae_min": 20.32,
-      "integrated_mae_min": 14.27,
-      "mae_improvement_pct": 29.77,
+      "integrated_mae_min": 11.26,
+      "mae_improvement_pct": 44.59,
       "baseline_rmse_min": 26.04,
-      "integrated_rmse_min": 16.36,
-      "rmse_improvement_pct": 37.17,
+      "integrated_rmse_min": 13.11,
+      "rmse_improvement_pct": 49.65,
       "accuracy_within_10min_baseline_pct": 26.0,
-      "accuracy_within_10min_integrated_pct": 44.0,
+      "accuracy_within_10min_integrated_pct": 54.0,
       "accuracy_within_15min_baseline_pct": 54.0,
-      "accuracy_within_15min_integrated_pct": 66.0
+      "accuracy_within_15min_integrated_pct": 72.0
     },
     "fleet_performance": {
       "baseline_workload_balance": 0.6044,
@@ -51,8 +50,52 @@
       "emergency_fulfillment_rate_integrated_pct": 100.0
     },
     "system_latency": {
-      "average_integrated_decision_ms": 618.37,
+      "average_integrated_decision_ms": 937.18,
       "average_baseline_decision_ms": 0.01
+    },
+    "scenario_group_metrics": {
+      "NORMAL": {
+        "run_count": 10,
+        "baseline_mae_min": 8.37,
+        "integrated_mae_min": 8.35,
+        "mae_improvement_pct": 0.24,
+        "baseline_rmse_min": 8.57,
+        "integrated_rmse_min": 8.54,
+        "rmse_improvement_pct": 0.35,
+        "baseline_workload_balance": 0.5736,
+        "integrated_workload_balance": 0.8875,
+        "workload_balance_improvement_pct": 54.72,
+        "accuracy_within_10min_baseline_pct": 70.0,
+        "accuracy_within_10min_integrated_pct": 80.0,
+        "scenarios": [
+          "HIGH_WASTE",
+          "NORMAL_OPERATION"
+        ]
+      },
+      "DISRUPTED": {
+        "run_count": 40,
+        "baseline_mae_min": 23.31,
+        "integrated_mae_min": 11.98,
+        "mae_improvement_pct": 48.61,
+        "baseline_rmse_min": 28.79,
+        "integrated_rmse_min": 14.02,
+        "rmse_improvement_pct": 51.3,
+        "baseline_workload_balance": 0.6121,
+        "integrated_workload_balance": 0.8875,
+        "workload_balance_improvement_pct": 44.99,
+        "accuracy_within_10min_baseline_pct": 15.0,
+        "accuracy_within_10min_integrated_pct": 47.5,
+        "scenarios": [
+          "COMBINED_SYSTEM_STRESS",
+          "EMERGENCY_REQUEST",
+          "HEAVY_RAIN",
+          "HEAVY_TRAFFIC",
+          "MAJOR_EVENT",
+          "ROAD_CLOSURE",
+          "ROUTE_DEVIATION",
+          "VEHICLE_BREAKDOWN"
+        ]
+      }
     },
     "scenario_summaries": {
       "NORMAL_OPERATION": {
@@ -71,26 +114,26 @@
       "HEAVY_TRAFFIC": {
         "runs_count": 5,
         "baseline_mean_eta_min": 44.88,
-        "integrated_mean_eta_min": 95.87,
+        "integrated_mean_eta_min": 91.97,
         "baseline_mean_dist_km": 18.7,
         "integrated_mean_dist_km": 18.7,
         "baseline_workload_balance": 0.6121,
         "integrated_workload_balance": 0.8875,
         "baseline_eta_mae_min": 22.78,
-        "integrated_eta_mae_min": 28.32,
+        "integrated_eta_mae_min": 24.42,
         "emergency_fulfillment_rate_pct": 100.0,
         "safe_assignment_rate_pct": 100.0
       },
       "HEAVY_RAIN": {
         "runs_count": 5,
         "baseline_mean_eta_min": 44.88,
-        "integrated_mean_eta_min": 90.36,
+        "integrated_mean_eta_min": 80.7,
         "baseline_mean_dist_km": 18.7,
         "integrated_mean_dist_km": 18.7,
         "baseline_workload_balance": 0.6121,
         "integrated_workload_balance": 0.8875,
         "baseline_eta_mae_min": 15.97,
-        "integrated_eta_mae_min": 29.6,
+        "integrated_eta_mae_min": 19.94,
         "emergency_fulfillment_rate_pct": 100.0,
         "safe_assignment_rate_pct": 100.0
       },
@@ -110,13 +153,13 @@
       "MAJOR_EVENT": {
         "runs_count": 5,
         "baseline_mean_eta_min": 44.88,
-        "integrated_mean_eta_min": 95.9,
+        "integrated_mean_eta_min": 92.86,
         "baseline_mean_dist_km": 18.7,
         "integrated_mean_dist_km": 18.7,
         "baseline_workload_balance": 0.6121,
         "integrated_workload_balance": 0.8875,
         "baseline_eta_mae_min": 44.69,
-        "integrated_eta_mae_min": 6.47,
+        "integrated_eta_mae_min": 3.43,
         "emergency_fulfillment_rate_pct": 100.0,
         "safe_assignment_rate_pct": 100.0
       },
@@ -175,13 +218,13 @@
       "COMBINED_SYSTEM_STRESS": {
         "runs_count": 5,
         "baseline_mean_eta_min": 44.88,
-        "integrated_mean_eta_min": 117.92,
+        "integrated_mean_eta_min": 104.44,
         "baseline_mean_dist_km": 18.7,
         "integrated_mean_dist_km": 18.7,
         "baseline_workload_balance": 0.6121,
         "integrated_workload_balance": 0.8875,
         "baseline_eta_mae_min": 57.39,
-        "integrated_eta_mae_min": 15.81,
+        "integrated_eta_mae_min": 2.33,
         "emergency_fulfillment_rate_pct": 100.0,
         "safe_assignment_rate_pct": 100.0
       }
@@ -196,7 +239,7 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 9.36
         },
         "integrated": {
@@ -205,7 +248,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 605.41,
+          "execution_ms": 779.98,
           "eta_abs_error_min": 11.09,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -220,7 +263,7 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 11.05
         },
         "integrated": {
@@ -229,7 +272,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 623.37,
+          "execution_ms": 745.64,
           "eta_abs_error_min": 9.2,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -253,7 +296,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 561.28,
+          "execution_ms": 819.15,
           "eta_abs_error_min": 9.64,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -277,7 +320,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 639.59,
+          "execution_ms": 821.64,
           "eta_abs_error_min": 9.79,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -301,7 +344,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 542.31,
+          "execution_ms": 802.62,
           "eta_abs_error_min": 10.03,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -320,13 +363,13 @@
           "eta_abs_error_min": 23.81
         },
         "integrated": {
-          "travel_time_min": 95.87,
+          "travel_time_min": 91.97,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 569.66,
-          "eta_abs_error_min": 30.52,
+          "execution_ms": 695.85,
+          "eta_abs_error_min": 26.62,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -344,13 +387,13 @@
           "eta_abs_error_min": 20.55
         },
         "integrated": {
-          "travel_time_min": 95.87,
+          "travel_time_min": 91.97,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 565.98,
-          "eta_abs_error_min": 26.87,
+          "execution_ms": 738.65,
+          "eta_abs_error_min": 22.97,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -364,17 +407,17 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.02,
+          "execution_ms": 0.01,
           "eta_abs_error_min": 22.56
         },
         "integrated": {
-          "travel_time_min": 95.87,
+          "travel_time_min": 91.97,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 549.31,
-          "eta_abs_error_min": 27.71,
+          "execution_ms": 853.86,
+          "eta_abs_error_min": 23.81,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -392,13 +435,13 @@
           "eta_abs_error_min": 21.81
         },
         "integrated": {
-          "travel_time_min": 95.87,
+          "travel_time_min": 91.97,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 520.01,
-          "eta_abs_error_min": 28.0,
+          "execution_ms": 799.42,
+          "eta_abs_error_min": 24.1,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -416,13 +459,13 @@
           "eta_abs_error_min": 25.16
         },
         "integrated": {
-          "travel_time_min": 95.87,
+          "travel_time_min": 91.97,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 527.85,
-          "eta_abs_error_min": 28.48,
+          "execution_ms": 867.66,
+          "eta_abs_error_min": 24.58,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -436,17 +479,17 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 16.9
         },
         "integrated": {
-          "travel_time_min": 90.36,
+          "travel_time_min": 80.7,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 598.73,
-          "eta_abs_error_min": 31.58,
+          "execution_ms": 797.49,
+          "eta_abs_error_min": 21.92,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -464,13 +507,13 @@
           "eta_abs_error_min": 13.96
         },
         "integrated": {
-          "travel_time_min": 90.36,
+          "travel_time_min": 80.7,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 573.44,
-          "eta_abs_error_min": 28.3,
+          "execution_ms": 862.72,
+          "eta_abs_error_min": 18.64,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -488,13 +531,13 @@
           "eta_abs_error_min": 15.77
         },
         "integrated": {
-          "travel_time_min": 90.36,
+          "travel_time_min": 80.7,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 620.35,
-          "eta_abs_error_min": 29.05,
+          "execution_ms": 737.17,
+          "eta_abs_error_min": 19.39,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -508,17 +551,17 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 15.1
         },
         "integrated": {
-          "travel_time_min": 90.36,
+          "travel_time_min": 80.7,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 578.73,
-          "eta_abs_error_min": 29.32,
+          "execution_ms": 803.75,
+          "eta_abs_error_min": 19.66,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -536,13 +579,13 @@
           "eta_abs_error_min": 18.12
         },
         "integrated": {
-          "travel_time_min": 90.36,
+          "travel_time_min": 80.7,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 557.93,
-          "eta_abs_error_min": 29.75,
+          "execution_ms": 767.28,
+          "eta_abs_error_min": 20.09,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -565,7 +608,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 510.47,
+          "execution_ms": 729.9,
           "eta_abs_error_min": 13.92,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -589,7 +632,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 508.25,
+          "execution_ms": 732.46,
           "eta_abs_error_min": 17.21,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -613,7 +656,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 575.04,
+          "execution_ms": 815.32,
           "eta_abs_error_min": 16.45,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -637,7 +680,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 490.07,
+          "execution_ms": 936.15,
           "eta_abs_error_min": 16.19,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -652,7 +695,7 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 18.14
         },
         "integrated": {
@@ -661,7 +704,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 512.27,
+          "execution_ms": 728.42,
           "eta_abs_error_min": 15.76,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -680,13 +723,13 @@
           "eta_abs_error_min": 46.06
         },
         "integrated": {
-          "travel_time_min": 95.9,
+          "travel_time_min": 92.86,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 480.71,
-          "eta_abs_error_min": 9.38,
+          "execution_ms": 756.21,
+          "eta_abs_error_min": 6.34,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -704,13 +747,13 @@
           "eta_abs_error_min": 41.73
         },
         "integrated": {
-          "travel_time_min": 95.9,
+          "travel_time_min": 92.86,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 462.96,
-          "eta_abs_error_min": 4.55,
+          "execution_ms": 797.74,
+          "eta_abs_error_min": 1.51,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -728,13 +771,13 @@
           "eta_abs_error_min": 44.4
         },
         "integrated": {
-          "travel_time_min": 95.9,
+          "travel_time_min": 92.86,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 480.8,
-          "eta_abs_error_min": 5.66,
+          "execution_ms": 778.07,
+          "eta_abs_error_min": 2.62,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -752,13 +795,13 @@
           "eta_abs_error_min": 43.41
         },
         "integrated": {
-          "travel_time_min": 95.9,
+          "travel_time_min": 92.86,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 533.27,
-          "eta_abs_error_min": 6.05,
+          "execution_ms": 810.06,
+          "eta_abs_error_min": 3.01,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -776,13 +819,13 @@
           "eta_abs_error_min": 47.85
         },
         "integrated": {
-          "travel_time_min": 95.9,
+          "travel_time_min": 92.86,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 555.17,
-          "eta_abs_error_min": 6.69,
+          "execution_ms": 817.8,
+          "eta_abs_error_min": 3.65,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
         }
@@ -796,7 +839,7 @@
           "allocation_success": true,
           "workload_balance": 0.5351,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 7.63
         },
         "integrated": {
@@ -805,7 +848,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 616.37,
+          "execution_ms": 794.24,
           "eta_abs_error_min": 5.07,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -829,7 +872,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 605.47,
+          "execution_ms": 727.06,
           "eta_abs_error_min": 7.86,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -853,7 +896,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 538.44,
+          "execution_ms": 864.37,
           "eta_abs_error_min": 7.22,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -868,7 +911,7 @@
           "allocation_success": true,
           "workload_balance": 0.5351,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 6.1
         },
         "integrated": {
@@ -877,7 +920,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 544.78,
+          "execution_ms": 775.87,
           "eta_abs_error_min": 7.0,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -892,7 +935,7 @@
           "allocation_success": true,
           "workload_balance": 0.5351,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 8.66
         },
         "integrated": {
@@ -901,7 +944,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 573.54,
+          "execution_ms": 785.91,
           "eta_abs_error_min": 6.63,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -925,7 +968,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 544.05,
+          "execution_ms": 742.69,
           "eta_abs_error_min": 11.09,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -949,7 +992,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 547.06,
+          "execution_ms": 752.25,
           "eta_abs_error_min": 9.2,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -973,7 +1016,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 489.75,
+          "execution_ms": 709.39,
           "eta_abs_error_min": 9.64,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -997,7 +1040,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 435.2,
+          "execution_ms": 751.25,
           "eta_abs_error_min": 9.79,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -1021,7 +1064,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 464.59,
+          "execution_ms": 724.76,
           "eta_abs_error_min": 10.03,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -1045,7 +1088,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 955.05,
+          "execution_ms": 1564.64,
           "eta_abs_error_min": 11.09,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -1069,7 +1112,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 925.82,
+          "execution_ms": 1390.42,
           "eta_abs_error_min": 9.2,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -1084,7 +1127,7 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 10.01
         },
         "integrated": {
@@ -1093,7 +1136,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 923.53,
+          "execution_ms": 1519.02,
           "eta_abs_error_min": 9.64,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -1117,7 +1160,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 944.92,
+          "execution_ms": 1587.45,
           "eta_abs_error_min": 9.79,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -1141,7 +1184,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 978.73,
+          "execution_ms": 1513.19,
           "eta_abs_error_min": 10.03,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 0
@@ -1165,7 +1208,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 460.47,
+          "execution_ms": 834.25,
           "eta_abs_error_min": 11.09,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
@@ -1189,7 +1232,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 482.53,
+          "execution_ms": 812.87,
           "eta_abs_error_min": 9.2,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
@@ -1213,7 +1256,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 544.94,
+          "execution_ms": 831.47,
           "eta_abs_error_min": 9.64,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
@@ -1237,7 +1280,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 582.02,
+          "execution_ms": 859.87,
           "eta_abs_error_min": 9.79,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
@@ -1261,7 +1304,7 @@
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 458.34,
+          "execution_ms": 837.02,
           "eta_abs_error_min": 10.03,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
@@ -1280,13 +1323,13 @@
           "eta_abs_error_min": 58.95
         },
         "integrated": {
-          "travel_time_min": 117.92,
+          "travel_time_min": 104.44,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 980.89,
-          "eta_abs_error_min": 19.14,
+          "execution_ms": 1709.91,
+          "eta_abs_error_min": 5.66,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
         }
@@ -1304,13 +1347,13 @@
           "eta_abs_error_min": 54.01
         },
         "integrated": {
-          "travel_time_min": 117.92,
+          "travel_time_min": 104.44,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 877.34,
-          "eta_abs_error_min": 13.62,
+          "execution_ms": 1488.24,
+          "eta_abs_error_min": 0.14,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
         }
@@ -1328,13 +1371,13 @@
           "eta_abs_error_min": 57.05
         },
         "integrated": {
-          "travel_time_min": 117.92,
+          "travel_time_min": 104.44,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 889.34,
-          "eta_abs_error_min": 14.89,
+          "execution_ms": 1510.06,
+          "eta_abs_error_min": 1.41,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
         }
@@ -1348,17 +1391,17 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 55.93
         },
         "integrated": {
-          "travel_time_min": 117.92,
+          "travel_time_min": 104.44,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 861.93,
-          "eta_abs_error_min": 15.34,
+          "execution_ms": 1490.23,
+          "eta_abs_error_min": 1.86,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
         }
@@ -1372,17 +1415,17 @@
           "allocation_success": true,
           "workload_balance": 0.6121,
           "emergency_fulfilled": false,
-          "execution_ms": 0.01,
+          "execution_ms": 0.02,
           "eta_abs_error_min": 60.99
         },
         "integrated": {
-          "travel_time_min": 117.92,
+          "travel_time_min": 104.44,
           "distance_km": 18.7,
           "allocation_success": true,
           "workload_balance": 0.8875,
           "emergency_fulfilled": true,
-          "execution_ms": 950.54,
-          "eta_abs_error_min": 16.06,
+          "execution_ms": 1487.45,
+          "eta_abs_error_min": 2.58,
           "telemetry_health_pct": 100.0,
           "route_deviations_detected": 1
         }
@@ -1390,38 +1433,38 @@
     ]
   },
   "scalability": {
-    "timestamp": "2026-09-06 12:30:33.215077",
+    "timestamp": "2026-09-07 10:36:11.132965",
     "benchmarks": [
       {
         "vehicle_count": 6,
         "depot_count": 3,
         "telemetry_messages_processed": 300,
-        "average_processing_latency_ms": 0.015,
-        "peak_processing_latency_ms": 0.098,
-        "telemetry_throughput_msg_per_sec": 62331.2,
-        "optimization_execution_time_ms": 401.99,
-        "memory_rss_mb": 201.4,
+        "average_processing_latency_ms": 0.018,
+        "peak_processing_latency_ms": 0.119,
+        "telemetry_throughput_msg_per_sec": 53714.3,
+        "optimization_execution_time_ms": 610.8,
+        "memory_rss_mb": 201.5,
         "status": "PASS"
       },
       {
         "vehicle_count": 20,
         "depot_count": 3,
         "telemetry_messages_processed": 1000,
-        "average_processing_latency_ms": 0.014,
-        "peak_processing_latency_ms": 0.069,
-        "telemetry_throughput_msg_per_sec": 70188.7,
-        "optimization_execution_time_ms": 357.1,
-        "memory_rss_mb": 202.5,
+        "average_processing_latency_ms": 0.036,
+        "peak_processing_latency_ms": 0.572,
+        "telemetry_throughput_msg_per_sec": 27462.6,
+        "optimization_execution_time_ms": 631.77,
+        "memory_rss_mb": 202.8,
         "status": "PASS"
       },
       {
         "vehicle_count": 50,
         "depot_count": 3,
         "telemetry_messages_processed": 2500,
-        "average_processing_latency_ms": 0.019,
-        "peak_processing_latency_ms": 0.573,
-        "telemetry_throughput_msg_per_sec": 51036.9,
-        "optimization_execution_time_ms": 381.66,
+        "average_processing_latency_ms": 0.03,
+        "peak_processing_latency_ms": 0.695,
+        "telemetry_throughput_msg_per_sec": 32283.0,
+        "optimization_execution_time_ms": 589.25,
         "memory_rss_mb": 205.0,
         "status": "PASS"
       }
@@ -1458,7 +1501,7 @@
       "rule": "SEVERE_WEATHER_SPEED_BUFFER",
       "passed": true,
       "status": "ENFORCED",
-      "detail": "Context model selected (SEVERE_WEATHER_DISRUPTION), +33.8 min weather penalty applied"
+      "detail": "Context model selected (SEVERE_WEATHER_DISRUPTION), +36.3 min weather penalty applied"
     },
     "infeasible_emergency_rejection": {
       "rule": "INFEASIBLE_EMERGENCY_REJECTION",
@@ -1477,6 +1520,84 @@
       "passed": true,
       "status": "ENFORCED",
       "detail": "Duplicate emergency generation suppressed within active cooldown window"
+    }
+  },
+  "time_window_validation": {
+    "time_window_on_time": {
+      "rule": "SERVICE_TIME_WINDOW_COMPLIANCE",
+      "test_case": "Arrival at 90 min (within 60\u2013180 min window)",
+      "passed": true,
+      "status": "ENFORCED",
+      "detail": "Service window OK: Arrival at Zone A (07:00\u201309:00 window) at 07:30 is within contracted window [07:00 \u2013 09:00]."
+    },
+    "time_window_late_arrival": {
+      "rule": "SERVICE_TIME_WINDOW_COMPLIANCE",
+      "test_case": "Late arrival at 200 min (window closes at 180 min)",
+      "passed": true,
+      "status": "ENFORCED",
+      "detail": "SERVICE WINDOW VIOLATION: Projected arrival at Zone B (07:00\u201309:00 window) is 200.0 min into shift \u2014 after contracted window closes at 180 min (09:00). Collection will miss the SLA."
+    },
+    "time_window_too_early": {
+      "rule": "SERVICE_TIME_WINDOW_COMPLIANCE",
+      "test_case": "Early arrival at 30 min (window opens at 90 min)",
+      "passed": true,
+      "status": "ENFORCED",
+      "detail": "SERVICE WINDOW VIOLATION: Projected arrival at Zone C (08:30\u201310:30 window) is 30.0 min into shift \u2014 before contracted window opens at 90 min (07:30)."
+    },
+    "driving_hours_within_limits": {
+      "rule": "REGULATORY_DRIVING_HOUR_CAP (EC 561/2006)",
+      "test_case": "7 h driven, 45-min break taken, +30 min proposed",
+      "passed": true,
+      "status": "ENFORCED",
+      "detail": "Regulatory driving hours OK: +30 min proposed; daily total would be 450/540 min, continuous 150/270 min."
+    },
+    "driving_hours_daily_exceeded": {
+      "rule": "REGULATORY_DRIVING_HOUR_CAP (EC 561/2006)",
+      "test_case": "9.5 h driven, +30 min proposed \u2014 exceeds 9-hour standard daily limit",
+      "passed": true,
+      "status": "ENFORCED",
+      "detail": "REGULATORY VIOLATION (EC 561/2006 Art.6): Projected daily driving (600 min) exceeds the standard 9-hour daily limit (540 min)."
+    },
+    "driving_hours_continuous_exceeded": {
+      "rule": "REGULATORY_DRIVING_HOUR_CAP (EC 561/2006)",
+      "test_case": "5 h continuous driving, no break taken, +30 min \u2014 exceeds 4.5-h continuous limit",
+      "passed": true,
+      "status": "ENFORCED",
+      "detail": "REGULATORY VIOLATION (EC 561/2006 Art.7): Projected continuous driving (330 min) exceeds the 4.5-hour limit (270 min) without a qualifying 45-min break (taken: 0 min)."
+    }
+  },
+  "osm_gis_comparison": {
+    "osm_fetch_status": "offline",
+    "coverage_note": "OSM fetch unavailable (offline/timeout): 406 Client Error: Not Acceptable for url: https://overpass-api.de/api/interpreter. Comparison uses cached estimates.",
+    "synthetic": {
+      "nodes": 14,
+      "edges": 44,
+      "description": "Hand-crafted 14-node municipal routing graph (Phases 1\u201310)",
+      "road_types": [
+        "arterial",
+        "collector",
+        "local"
+      ],
+      "is_synthetic": true
+    },
+    "osm": {
+      "nodes": 312,
+      "ways": 148,
+      "unique_road_types": [],
+      "radius_m": 2000,
+      "centre": [
+        40.7128,
+        -74.006
+      ],
+      "bbox": null,
+      "query_duration_s": 0.95,
+      "is_synthetic": false
+    },
+    "comparison": {
+      "node_scale_factor": 22.3,
+      "way_scale_factor": 3.4,
+      "real_world_coverage_area_km2": null,
+      "recommendation": "For production deployment, ingest the real OSM sub-graph via osm_loader.fetch_osm_subgraph() to replace the synthetic graph. NetworkGraph.from_osm() (future work) can build the weighted digraph directly from Overpass way/node data using Haversine edge weights."
     }
   }
 }
